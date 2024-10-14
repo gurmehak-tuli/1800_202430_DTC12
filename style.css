@@ -44,7 +44,7 @@
 
 .navbar-brand {
     font-family: 'Oswald', variable;
-    /*change the font name for what you have*/
+    /* Change the font name for what you have */
     font-size: 2.25rem;
 }
 
@@ -127,4 +127,25 @@
 body {
     background-color: #F8F9FA;
     /* Light cream for body background to follow the 60% rule */
+}
+
+/* Style for Profile icon to match footer icons */
+.navbar-nav .material-icons {
+    color: #000;
+    font-size: 24px;
+}
+
+.navbar-nav .nav-link:hover .material-icons {
+    color: #4CAF50;
+}
+
+/* Style for Footer Icons to Match Profile Icon */
+footer .material-icons {
+    color: #000;
+    font-size: 32px;
+}
+
+/* Optional hover effect for footer icons */
+footer .material-icons:hover {
+    color: #4CAF50;
 }
