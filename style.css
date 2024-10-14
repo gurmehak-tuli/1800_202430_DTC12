@@ -5,40 +5,40 @@
 */
 
 /* New Color Palette:
-* White/Cream (Text): #FEFAE0 (text, contrast with dark)
-* Dark Green (Primary): #283618      
-* Light Green (Secondary): #606C38 (canvas background)
-* Light Brown (Accent): #DDA15E
+* Background (Light Cream): #F8F9FA (neutral backdrop)
+* Primary (Navy Blue): #1D3557      
+* Secondary (Muted Blue): #457B9D (cards, secondary buttons)
+* Accent (Lime Green): #4CAF50
 */
 
 .bg-info {
-    background-color: #606C38 !important;
-    /* Light green for secondary backgrounds */
+    background-color: #457B9D !important;
+    /* Muted blue for secondary backgrounds */
 }
 
 .navbar-light .navbar-brand,
 .navbar-light .navbar-nav .nav-link {
-    color: #283618;
-    /* Dark green for brand name & nav links for visibility */
+    color: #1D3557;
+    /* Navy blue for brand name & nav links for visibility */
 }
 
 .btn-info {
-    color: #FEFAE0;
-    /* Lightest shade for text on info button for contrast */
-    background-color: #606C38;
-    /* Light green for button background */
-    border-color: #283618;
-    /* Dark green for button border */
+    color: #F8F9FA;
+    /* Light cream for text on info button for contrast */
+    background-color: #457B9D;
+    /* Muted blue for button background */
+    border-color: #1D3557;
+    /* Navy blue for button border */
 }
 
 .btn-primary {
-    color: #FEFAE0;
-    /* Lightest shade for text */
+    color: #F8F9FA;
+    /* Light cream for text */
     font-size: 150%;
-    background-color: #283618;
-    /* Dark green for primary button background */
-    border-color: #DDA15E;
-    /* Reddish-brown for border to use as accent */
+    background-color: #1D3557;
+    /* Navy blue for primary button background */
+    border-color: #4CAF50;
+    /* Lime green for border to use as accent */
     border-width: thick;
 }
 
@@ -50,81 +50,81 @@
 
 /* Style for radio button labels when not selected */
 .btn-outline-primary {
-    color: #283618;
-    /* Dark green text color for contrast */
-    border-color: #606C38;
-    /* Light green border color */
+    color: #1D3557;
+    /* Navy blue text color for contrast */
+    border-color: #457B9D;
+    /* Muted blue border color */
 }
 
 /* Style for radio button labels on hover or focus */
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
-    color: #FEFAE0;
-    /* Lightest color for text */
-    background-color: #606C38;
-    /* Light green background */
-    border-color: #283618;
-    /* Dark green border for emphasis */
+    color: #F8F9FA;
+    /* Light cream for text */
+    background-color: #457B9D;
+    /* Muted blue background */
+    border-color: #1D3557;
+    /* Navy blue border for emphasis */
 }
 
 /* Style for the active (checked) radio button label */
 .btn-check:checked+.btn-outline-primary,
 .btn-check:active+.btn-outline-primary {
-    color: #FEFAE0;
-    /* Lightest color for text */
-    background-color: #283618;
-    /* Dark green background for primary action */
-    border-color: #DDA15E;
-    /* Reddish-brown border to use as accent */
+    color: #F8F9FA;
+    /* Light cream for text */
+    background-color: #1D3557;
+    /* Navy blue background for primary action */
+    border-color: #4CAF50;
+    /* Lime green border to use as accent */
 }
 
 /* Custom styles for dropdown to match the new color palette */
 
 /* Style for the dropdown button */
 .btn-secondary {
-    color: #FEFAE0;
-    /* Lightest color for text */
-    background-color: #283618;
-    /* Dark green for the button background */
-    border-color: #606C38;
-    /* Light green for the button border */
+    color: #F8F9FA;
+    /* Light cream for text */
+    background-color: #1D3557;
+    /* Navy blue for the button background */
+    border-color: #457B9D;
+    /* Muted blue for the button border */
 }
 
 /* Change dropdown button hover/focus styles */
 .btn-secondary:hover,
 .btn-secondary:focus {
-    color: #FEFAE0;
-    /* Lightest color remains for text */
-    background-color: #606C38;
-    /* Light green for background on hover/focus */
-    border-color: #283618;
-    /* Dark green for border for emphasis */
+    color: #F8F9FA;
+    /* Light cream remains for text */
+    background-color: #457B9D;
+    /* Muted blue for background on hover/focus */
+    border-color: #1D3557;
+    /* Navy blue for border for emphasis */
 }
 
 /* Style for the dropdown menu */
 .dropdown-menu {
-    background-color: #FEFAE0;
-    /* Lightest color for dropdown background */
-    border-color: #606C38;
-    /* Light green for border color */
+    background-color: #F8F9FA;
+    /* Light cream for dropdown background */
+    border-color: #457B9D;
+    /* Muted blue for border color */
 }
 
 /* Style for dropdown items */
 .dropdown-item {
-    color: #283618;
-    /* Dark green for text color */
+    color: #1D3557;
+    /* Navy blue for text color */
 }
 
 /* Style for dropdown item hover */
 .dropdown-item:hover,
 .dropdown-item:focus {
-    color: #FEFAE0;
-    /* Lightest color for text on hover/focus */
-    background-color: #606C38;
-    /* Light green for background on hover/focus */
+    color: #F8F9FA;
+    /* Light cream for text on hover/focus */
+    background-color: #457B9D;
+    /* Muted blue for background on hover/focus */
 }
 
 body {
-    background-color: #FEFAE0;
-    /* Lightest shade for body background to follow the 60% rule */
+    background-color: #F8F9FA;
+    /* Light cream for body background to follow the 60% rule */
 }
