@@ -39,26 +39,65 @@
 
 </head>
 
-<body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+<body class="bg-gray-100">
 
-    <!-- our own navbar goes here -->
-    <nav id="navbarPlaceholder"></nav>
+    <div class="bg-white flex items-center justify-between p-4 shadow-md">
+        <div class="flex items-center space-x-4">
+            <button>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </button>
+            <span class="text-blue-800 font-bold text-lg">BCIT</span>
+        </div>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="currentColor"
+                viewBox="0 0 20 20">
+            </svg>
+        </button>
+    </div>
 
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
+    <div class="p-4">
+        <div class="relative">
+            <input type="text" placeholder="Search..."
+                class="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <div class="absolute left-3 top-3 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+                </svg>
+            </div>
+        </div>
+    </div>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_DTC12.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+    <div class="p-4 grid grid-cols-1 gap-4">
+        <div class="bg-gray-300 h-48 rounded-lg flex items-center justify-center">
+            <span class="text-4xl font-bold">BCIT</span>
+        </div>
+        <div class="bg-gray-400 h-32 rounded-lg"></div>
+        <div class="bg-gray-400 h-32 rounded-lg"></div>
+        <div class="bg-gray-400 h-32 rounded-lg"></div>
+        <div class="bg-gray-400 h-32 rounded-lg"></div>
+    </div>
+
+    <div class="bg-white fixed bottom-0 left-0 right-0 p-4 shadow-inner flex justify-around">
+        <div class="flex flex-col items-center">
+
+            <span class="text-xs">Home</span>
+        </div>
+        <div class="flex flex-col items-center">
+
+            <span class="text-xs">Academics</span>
+        </div>
+        <div class="flex flex-col items-center">
+
+            <span class="text-xs">Campus</span>
+        </div>
+        <div class="flex flex-col items-center">
+
+            <span class="text-xs">Social</span>
+        </div>
+    </div>
 
 </body>
 
