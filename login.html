@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>MyBcit</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!------------------------>
@@ -45,7 +45,21 @@
     <!------------------------------>
 
     <!-- our own navbar goes here -->
-    <nav id="navbarPlaceholder"></nav>
+    <!-- <nav id="navbarPlaceholder"></nav> -->
+    <div class="bg-white d-flex align-items-center justify-content-between p-3 shadow-sm">
+        <div class="d-flex align-items-center me-4">
+            <button class="btn btn-link p-0">
+                <i class="bi bi-three-dots-vertical fs-5"></i>
+            </button>
+
+            <span class="text-primary fw-bold fs-5 ms-3">BCIT</span>
+        </div>
+
+        <button class="btn btn-link p-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person" width="24" height="24" fill="currentColor">
+            </svg>
+        </button>
+    </div>
 
     <!-- the body of your page goes here -->
     <div class="container">
@@ -54,7 +68,21 @@
     <div id="firebaseui-auth-container"></div>
 
     <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+    <!-- <nav id="footerPlaceholder"></nav> -->
+    <div class="bg-white fixed-bottom py-3 shadow d-flex justify-content-around">
+        <div class="text-center">
+            <span class="text-muted">Home</span>
+        </div>
+        <div class="text-center">
+            <span class="text-muted">Academics</span>
+        </div>
+        <div class="text-center">
+            <span class="text-muted">Campus</span>
+        </div>
+        <div class="text-center">
+            <span class="text-muted">Social</span>
+        </div>
+    </div>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

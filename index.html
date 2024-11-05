@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>MyBcit</title>
     <meta name="COMP1800 Landing Page" content="My 1800 App">
 
     <!-- Required meta tags -->
@@ -28,119 +28,34 @@
 </head>
 
 <body>
-    <div class="container py-4">
-        <nav class="navbar navbar-expand-lg navbar-light bg-info mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="images/Mybcitlogo.jpg" height="36" alt="MYbcit Logo" class="me-2">
-                    <span>MYbcit</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link d-flex align-items-center" href="#">
-                                <span class="material-icons me-1">person</span> Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">BCIT News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Announcements</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-        <div class="jumbotron">
-            <h1 class="display-4">Hello, Bcit Students!</h1>
-            <p class="lead">This app/website is made to make your life easier</p>
-            <hr class="my-4">
-            <div class="d-grid">
-                <a class="btn btn-primary" href="#" role="button">Learn more</a>
-            </div>
+    <!-- our own navbar goes here -->
+    <nav id="navbarPlaceholder"></nav>
+
+    <!-- the body of your page goes here -->
+    <div class="container text-center py-4">
+        <div class="rounded-circle overflow-hidden">
+            <img class="responsive" src="./images/elmo.jpg" alt="">
         </div>
-
-        <div class="row mb-4 mb-md-5">
-            <div class="col-md-8">
-                <h2>3-Day Calendar View</h2>
-                <table class="table table-bordered">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Event</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Oct 14, 2024</td>
-                            <td>COMP1800 Lecture</td>
-                        </tr>
-                        <tr>
-                            <td>Oct 15, 2024</td>
-                            <td>Group Project Meeting</td>
-                        </tr>
-                        <tr>
-                            <td>Oct 16, 2024</td>
-                            <td>COMP1510 Lab</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-md-4">
-                <h2>Upcoming Assignments</h2>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>COMP1510: Assignment 1</span>
-                        <span class="badge bg-primary rounded-pill">Oct 18</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>COMP1710: Quiz 2</span>
-                        <span class="badge bg-warning text-dark rounded-pill">Oct 20</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span>COMP1110: Final Project</span>
-                        <span class="badge bg-danger rounded-pill">Oct 25</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Adds space between footer and CTA items -->
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-            <p class="col-md-12 mb-0 text-center text-mutedà">&copy; 2024 BCIT COMP1800</p>
-        </footer>
-
+        <h1>Welcome to MyBcit App</h1>
+        <a href="login.html" class="btn btn-primary" role="button">Log in</a>
     </div>
 
-    <footer class="navbar justify-content-evenly bg-info fixed-bottom">
-        <div class="container py-3 text-center">
-            <div>
-                <a href="#"><span class="material-icons">home</span></a>
-                <p>Home</p>
-            </div>
-            <div>
-                <a href="#"><span class="material-icons">school</span></a>
-                <p>Academics</p>
-            </div>
-            <div>
-                <a href="#"><span class="material-icons">location_city</span></a>
-                <p>Campus</p>
-            </div>
-            <div>
-                <a href="#"><span class="material-icons">people</span></a>
-                <p>Community</p>
-            </div>
-        </div>
-    </footer>
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <!-- <script src="./scripts/firebaseAPI_TEAM99.js"></script> -->
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script>
+        logout();       //make sure user is logged out
+    </script>
 </body>
 
 </html>
