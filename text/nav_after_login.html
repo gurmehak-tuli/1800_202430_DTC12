@@ -1,28 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-success">
+<!-- Google Fonts and Material Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-success bg-white d-flex align-items-center justify-content-between">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="images/Mybcitlogo.jpg" height="36">
-            myBCIT</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="d-flex align-items-center me-4 position-relative">
+
+            <button class="btn btn-link p-0" onclick="toggleDropdown()">
+                <i class="bi bi-three-dots-vertical fs-5"></i>
+            </button>
+
+            <span class="text-primary fw-bold fs-5 ms-3">BCIT</span>
+
+
+            <div id="dropdownContent" class="dropdown-content"
+                style="display: none; position: absolute; top: 30px; left: 0; background: white; padding: 10px; border: 1px solid #ccc; z-index: 1000;">
+                <label>
+                    <input type="radio" name="options" value="option1" class="form-check-input"> Option 1
+                </label><br>
+                <label>
+                    <input type="radio" name="options" value="option2" class="form-check-input"> Option 2
+                </label><br>
+                <label>
+                    <input type="radio" name="options" value="option3" class="form-check-input"> Option 3
+                </label>
+            </div>
+        </div>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="../aboutus.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../aboutus.html">Profile</a>
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link d-flex align-items-center" href="../profile.html">
+                        <span class="material-icons me-1">person</span> Profile
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../main.html">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Resources.html">Resources</a>
+                    <a class="nav-link" href="../resources.html">Resources</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Link.html">Link</a>
+                    <a class="nav-link" href="../contact.html">Contact Us</a>
                 </li>
             </ul>
             <div class="d-flex">
@@ -30,4 +50,5 @@
             </div>
         </div>
     </div>
+    <script src="./scripts/nav.js"></script>
 </nav>

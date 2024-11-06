@@ -20,23 +20,14 @@
 </head>
 
 <body class="bg-light">
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-    <div class="bg-white d-flex align-items-center justify-content-between p-3 shadow-sm">
-        <div class="d-flex align-items-center me-4">
-            <button class="btn btn-link p-0">
-                <i class="bi bi-three-dots-vertical fs-5"></i>
-            </button>
+    <!-- our own navbar goes here -->
+    <nav id="navbarPlaceholder"></nav>
 
-            <span class="text-primary fw-bold fs-5 ms-3">BCIT</span>
-        </div>
-
-        <button class="btn btn-link p-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person" width="24" height="24" fill="currentColor">
-            </svg>
-        </button>
-    </div>
-
-
+    <!-- the body of your page goes here -->
     <div class="p-3">
         <div class="position-relative">
             <input type="text" placeholder="Search..." class="form-control ps-5 rounded border border-secondary">
@@ -59,35 +50,64 @@
             <div class="col">
                 <div class="bg-secondary rounded" style="height: 8rem;"></div>
             </div>
-            <div class="col">
-                <div class="bg-secondary rounded" style="height: 8rem;"></div>
-            </div>
-            <div class="col">
-                <div class="bg-secondary rounded" style="height: 8rem;"></div>
+            <div class="row mb-4 mb-md-5">
+                <div class="col-md-8">
+                    <h2>3-Day Calendar View</h2>
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Event</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 14, 2024</td>
+                                <td>COMP1800 Lecture</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 15, 2024</td>
+                                <td>Group Project Meeting</td>
+                            </tr>
+                            <tr>
+                                <td>Oct 16, 2024</td>
+                                <td>COMP1510 Lab</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-4">
+                    <h2>Upcoming Assignments</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>COMP1510: Assignment 1</span>
+                            <span class="badge bg-primary rounded-pill">Oct 18</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>COMP1710: Quiz 2</span>
+                            <span class="badge bg-warning text-dark rounded-pill">Oct 20</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>COMP1110: Final Project</span>
+                            <span class="badge bg-danger rounded-pill">Oct 25</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
 
-    <footer class="navbar justify-content-evenly bg-info fixed-bottom">
-        <div class="container py-3 text-center">
-            <div class="bg-white fixed-bottom py-3 shadow d-flex justify-content-around">
-                <div class="text-center">
-                    <a href="main.html" class="text-muted text-decoration-none">Home</a>
-                </div>
-                <div class="text-center">
-                    <a href="academics.html" class="text-muted text-decoration-none">Academics</a>
-                </div>
-                <div class="text-center">
-                    <a href="campus.html" class="text-muted text-decoration-none">Campus</a>
-                </div>
-                <div class="text-center">
-                    <a href="community.html" class="text-muted text-decoration-none">Social</a>
-                </div>
-            </div>
-        </div>
-
-    </footer>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <script src="./scripts/firebaseAPI_DTC12.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 
