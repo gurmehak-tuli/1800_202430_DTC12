@@ -48,26 +48,25 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <!-- stuff -->
     <div class="p-3">
         <h2 class="text-center">Add Assignment</h2>
         <form id="add-assignment-form" onsubmit="submitAssignment(); return false;">
-    
+
             <div class="mb-3">
                 <label for="assignment-title" class="form-label">Assignment Name</label>
                 <input type="text" id="assignment-title" class="form-control" required>
             </div>
-    
+
             <div class="mb-3">
                 <label for="assignment-description" class="form-label">Short Description</label>
                 <textarea id="assignment-description" class="form-control" rows="3" required></textarea>
             </div>
-    
+
             <div class="mb-3">
                 <label for="assignment-date" class="form-label">Due Date</label>
                 <input type="date" id="assignment-date" class="form-control" required>
             </div>
-    
+
             <div class="mb-3">
                 <label for="assignment-urgency" class="form-label">Urgency</label>
                 <select id="assignment-urgency" class="form-control" required>
@@ -76,13 +75,13 @@
                     <option value="High">High</option>
                 </select>
             </div>
-    
+
             <button type="submit" class="btn btn-primary">Add Assignment</button>
             <a href="assignments.html" class="btn btn-secondary">Back to Assignments</a>
         </form>
     </div>
-    
-    <script>
+
+    <!-- <script>
         const urlParams = new URLSearchParams(window.location.search);
         const classId = urlParams.get('class'); 
 
@@ -104,7 +103,7 @@
                 console.error("Error adding assignment: ", error);
             });
         }
-    </script>
+    </script> -->
 
 
     <!-- our own footer goes here-->
@@ -115,7 +114,7 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/AddAssignments.js"></script>
+    <script src="./scripts/addassignments.js"></script>
 
 </body>
 
