@@ -50,26 +50,62 @@
     <!-- the body of your page goes here -->
     <!-- stuff -->
     <div class="p-3">
-        <div class="row row-cols-1 g-3">
-            <div class="col">
-                <a href="assignments.html" class="text-decoration-none">
-                    <div class="box bg-secondary text-center text-white rounded py-5">
-                        <span class="display-4 fw-bold">Assignments</span>
-                    </div>
-                </a>
+        <h2 class="text-center">Add Assignment</h2>
+        <form id="add-assignment-form" onsubmit="submitAssignment(); return false;">
+    
+            <div class="mb-3">
+                <label for="assignment-title" class="form-label">Assignment Name</label>
+                <input type="text" id="assignment-title" class="form-control" required>
             </div>
-            <div class="col">
-                <div class="box bg-secondary text-center text-white rounded py-5">
-                    <span class="display-4 fw-bold">Current Schedule</span>
-                </div>
+    
+            <div class="mb-3">
+                <label for="assignment-description" class="form-label">Short Description</label>
+                <textarea id="assignment-description" class="form-control" rows="3" required></textarea>
             </div>
-            <div class="col">
-                <div class="box bg-secondary text-center text-white rounded py-5">
-                    <span class="display-4 fw-bold">Announcements</span>
-                </div>
+    
+            <div class="mb-3">
+                <label for="assignment-date" class="form-label">Due Date</label>
+                <input type="date" id="assignment-date" class="form-control" required>
             </div>
-        </div>
+    
+            <div class="mb-3">
+                <label for="assignment-urgency" class="form-label">Urgency</label>
+                <select id="assignment-urgency" class="form-control" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Add Assignment</button>
+            <a href="assignments.html" class="btn btn-secondary">Back to Assignments</a>
+        </form>
     </div>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const classId = urlParams.get('class'); 
+
+        function submitAssignment() {
+            const title = document.getElementById("assignment-title").value;
+            const description = document.getElementById("assignment-description").value;
+            const dueDate = document.getElementById("assignment-date").value;
+            const urgency = document.getElementById("assignment-urgency").value;
+
+            db.collection(classId).add({
+                title: title,
+                description: description,
+                dueDate: dueDate,
+                urgency: urgency
+            }).then(() => {
+                alert("Assignment added successfully!");
+                window.location.href = "assignments.html"; 
+            }).catch((error) => {
+                console.error("Error adding assignment: ", error);
+            });
+        }
+    </script>
+
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -79,7 +115,7 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/AddAssignments.js"></script>
 
 </body>
 
