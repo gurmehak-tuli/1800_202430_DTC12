@@ -48,7 +48,29 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <!-- stuff -->
+    <template id="newsCardTemplate">
+        <div class="container-fluid px-5">
+            <div class="card mb-5 p-3 shadow-lg" style="width: 100%;">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-4">
+                        <img class="news-img img-fluid rounded-start" src="" alt="News Image"
+                            style="height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title headline mb-3"></h5>
+                            <h6 class="card-subtitle mb-3 text-muted subheading"></h6>
+                            <p class="card-text description mb-4"></p>
+                            <a href="#" class="btn btn-primary view-more-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Container for News Cards -->
+    <div id="newsCardGroup"></div>
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -58,7 +80,8 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/news.js"></script>
 
 </body>
 
