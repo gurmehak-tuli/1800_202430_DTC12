@@ -1,38 +1,26 @@
-var assignmentDocID = localStorage.getItem("assignmentDocID");
+var currentUser 
 
-function getAssignmentName(id) {
-    db.collection("assignments")
-        .doc(id)
-        .get()
-        .then((thisAssignment) => {
-            var assignmentName = thisAssignment.data().name;
-            document.getElementById("assignmentName").innerHTML = assignmentName;
-        });
-}
+firebase.auth().onAuthStateChanged((user) => 
+{
+    currentUser = user;
+})
 
-getAssignmentName(assignmentDocID);
+function addAssignment(){
 
-function writeReview() {
-    window.location.href = 'thanks.html';
-}
-
-function submitAssignment() {
-    console.log("inside add assignment");
     let assignmentTitle = document.getElementById("assignmentTitle").value;
     let assignmentDescription = document.getElementById("Description").value;
     let assignmentDueDate = document.getElementById("dueDate").value;
     let assignmentUrgency = document.getElementById("urgency").value;
 
+    urlParams = new URLSearchParams(window.location.search)
+
+    classID = urlParams.get("id");
+
     console.log(assignmentTitle, assignmentDescription, assignmentDueDate, assignmentUrgency);
 
-    var user = firebase.auth().currentUser;
-
-    if (user) {
-        var currentUser = db.collection("Assignments").doc(user.uid);
-        var userID = user.uid;
-
-        db.collection("assignments").add({
-            assignmentDocID: assignmentDocID,
+    if(currentUser){
+        var userID = currentUser.uid;
+        db.collection("users").doc(currentUser.uid).collection("classes").doc(classID).collection("assignments").add({
             userID: userID,
             title: assignmentTitle,
             description: assignmentDescription,
@@ -40,7 +28,7 @@ function submitAssignment() {
             urgency: assignmentUrgency,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            window.location.href = "thanks.html";
+            window.location.href = "assignment.html";
         });
     } else {
         console.log("No user is signed in");
@@ -48,7 +36,60 @@ function submitAssignment() {
     }
 
 }
-getAssignmentName(assignmentDocID);
+
+
+
+// var assignmentDocID = localStorage.getItem("assignmentDocID");
+
+// function getAssignmentName(id) {
+//     db.collection("assignments")
+//         .doc(id)
+//         .get()
+//         .then((thisAssignment) => {
+//             var assignmentName = thisAssignment.data().name;
+//             document.getElementById("assignmentName").innerHTML = assignmentName;
+//         });
+// }
+
+// getAssignmentName(assignmentDocID);
+
+// function writeReview() {
+//     window.location.href = 'thanks.html';
+// }
+
+// function submitAssignment() {
+//     console.log("inside add assignment");
+//     let assignmentTitle = document.getElementById("assignmentTitle").value;
+//     let assignmentDescription = document.getElementById("Description").value;
+//     let assignmentDueDate = document.getElementById("dueDate").value;
+//     let assignmentUrgency = document.getElementById("urgency").value;
+
+//     console.log(assignmentTitle, assignmentDescription, assignmentDueDate, assignmentUrgency);
+
+//     var user = firebase.auth().currentUser;
+
+//     if (user) {
+//         var currentUser = db.collection("Assignments").doc(user.uid);
+//         var userID = user.uid;
+
+//         db.collection("assignments").add({
+//             assignmentDocID: assignmentDocID,
+//             userID: userID,
+//             title: assignmentTitle,
+//             description: assignmentDescription,
+//             dueDate: assignmentDueDate,
+//             urgency: assignmentUrgency,
+//             timestamp: firebase.firestore.FieldValue.serverTimestamp()
+//         }).then(() => {
+//             window.location.href = "thanks.html";
+//         });
+//     } else {
+//         console.log("No user is signed in");
+//         window.location.href = 'addassignment.html';
+//     }
+
+// }
+// getAssignmentName(assignmentDocID);
 //
 // var hikeDocID = localStorage.getItem("hikeDocID");    //visible to all functions on this page
 

@@ -1,31 +1,81 @@
-function displayAssignmentInfo() {
-    let params = new URL(window.location.href); //get URL of search bar
-    let ID = params.searchParams.get("docID"); //get value for key "id"
-    console.log(ID);
+var currentUser
 
-    // doublecheck: is your collection called "Reviews" or "reviews"?
-    db.collection("assignment")
-        .doc(ID)
-        .get()
-        .then(doc => {
-            thisAssignment = doc.data();
-            assignmentCode = doc.data().code;
-            assignmentName = doc.data().name;
+firebase.auth().onAuthStateChanged((user) => {
+    currentUser = user;
+})
 
 
-            document.getElementById("assignmentName").innerHTML = assignmentName;
-            // let imgEvent = document.querySelector("#assignmentImage");       
-            // imgEvent.src = "../images/" + assignmentCode + ".jpg";
-        });
+
+function getAllAssignments() {
+    db.collection("users").doc("hx6UKSV0M4QjljI830sJZUL9Idw2").collection("classes").get().then(classes => {
+        for (theclass of classes.docs) {
+            theclassdata = theclass.data();
+
+            // displayClassName({ ...theclassdata.data(), id: theclassdata.id })
+            // getAssignmentInfo(theclass.ref.collection("assignments"))
+
+        }
+    })
 }
 
+// function displayClassName(theClass) {
+//     theName = theClass.name;
+//     id = theClass.id;
 
-function saveAssigmentDocumentIDAndRedirect() {
-    let params = new URL(window.location.href) //get the url from the search bar
-    let ID = params.searchParams.get("docID");
-    localStorage.setItem('assignmentDocID', ID);
-    window.location.href = 'addassignment.html';
-}
+//     new_URL = new URL("addassignments.html", window.location.href);
+//     new_URL.searchParams.append("id", theClass.id);
+
+//     classes = document.getElementById("classes");
+//     classes.innerHTML +=
+//         `<div class="row">
+//         <div class="col-md-4" id="comp1510">
+//             <h2>${theName}</h2>
+//             <ul class="list-group" id="assignment-list-comp1510"></ul>
+//             <a href="${new_URL}" class="btn btn-primary mt-2">Add Assignment</a>
+//         </div>
+//     </div>`;
+// }
+
+
+// function getAssignmentInfo(assignments) {
+//     let params = new URL(window.location.href); //get URL of search bar
+//     let ID = params.searchParams.get("docID"); //get value for key "id"
+//     console.log(ID);
+
+//     // doublecheck: is your collection called "Reviews" or "reviews"?
+
+//     assignments.get().then(doc => {
+//         for (assignment of doc.docs) {
+
+//             assignmentdoc = assignment.data();
+//             displayAssignmentInfo({ ...assignmentdoc, id: assignment.id });
+
+//             // thisAssignment = doc.data();
+//             // assignmentCode = doc.data().code;
+//             // assignmentName = doc.data().name;
+
+
+
+//             document.getElementById("assignmentName").innerHTML = assignmentName;
+//             // let imgEvent = document.querySelector("#assignmentImage");       
+//             // imgEvent.src = "../images/" + assignmentCode + ".jpg";
+//         }
+//     })
+// }
+
+// function displayAssignmentInfo(assignment) {
+
+//     name = assignment.name;
+
+// }
+
+
+// function saveAssigmentDocumentIDAndRedirect() {
+//     let params = new URL(window.location.href) //get the url from the search bar
+//     let ID = params.searchParams.get("docID");
+//     localStorage.setItem('assignmentDocID', ID);
+//     window.location.href = 'addassignment.html';
+// }
 
 function populateAssignmentReviews() {
     console.log("Fetching assignment info...");
@@ -62,5 +112,5 @@ function populateAssignmentReviews() {
         });
 }
 
-displayAssignmentInfo();
-populateAssignmentReviews();
+//getAssignmentInfo();
+//populateAssignmentReviews();
