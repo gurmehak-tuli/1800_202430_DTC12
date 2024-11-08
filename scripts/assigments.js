@@ -1,48 +1,66 @@
-// Retrieve assignment ID from localStorage
-var assignmentDocID = localStorage.getItem("assignmentDocID");
+function displayAssignmentInfo() {
+    let params = new URL(window.location.href); //get URL of search bar
+    let ID = params.searchParams.get("docID"); //get value for key "id"
+    console.log(ID);
 
-// Function to get assignment name by document ID and display it
-function getAssignmentName(id) {
-    db.collection("assignments")
-        .doc(id)
+    // doublecheck: is your collection called "Reviews" or "reviews"?
+    db.collection("assignment")
+        .doc(ID)
         .get()
-        .then((thisAssignment) => {
-            var assignmentName = thisAssignment.data().name;
+        .then(doc => {
+            thisAssignment = doc.data();
+            assignmentCode = doc.data().code;
+            assignmentName = doc.data().name;
+
+
             document.getElementById("assignmentName").innerHTML = assignmentName;
+            // let imgEvent = document.querySelector("#assignmentImage");       
+            // imgEvent.src = "../images/" + assignmentCode + ".jpg";
         });
 }
 
-// Call the function to get assignment name and display it
-getAssignmentName(assignmentDocID);
 
-// Function to handle assignment submission
-function submitAssignment() {
-    let assignmentTitle = document.getElementById("assignmentName").value;
-    let assignmentDescription = document.getElementById("shortDescription").value;
-    let assignmentDueDate = document.getElementById("dueDate").value;
-    let assignmentUrgency = document.getElementById("urgency").value;
-
-    // Get the current authenticated user
-    var user = firebase.auth().currentUser;
-
-    if (user) {
-        var currentUser = db.collection("users").doc(user.uid);
-        var userID = user.uid;
-
-        // Add assignment details to the "assignments" collection
-        db.collection("assignments").add({
-            assignmentDocID: assignmentDocID,
-            userID: userID,
-            title: assignmentTitle,
-            description: assignmentDescription,
-            dueDate: assignmentDueDate,
-            urgency: assignmentUrgency,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            window.location.href = "thanks.html"; // Redirect to the thank-you page
-        });
-    } else {
-        console.log("No user is signed in");
-        window.location.href = 'assignment.html';
-    }
+function saveAssigmentDocumentIDAndRedirect() {
+    let params = new URL(window.location.href) //get the url from the search bar
+    let ID = params.searchParams.get("docID");
+    localStorage.setItem('assignmentDocID', ID);
+    window.location.href = 'addassignment.html';
 }
+
+function populateAssignmentReviews() {
+    console.log("Fetching assignment info...");
+    let assignmentCardTemplate = document.getElementById("assignmentCardTemplate");
+    let assignmentCardGroup = document.getElementById("assignmentCardGroup");
+
+    let params = new URL(window.location.href); // Get the URL from the search bar
+    let assignmentID = params.searchParams.get("docID");
+
+    // Double-check: is your collection called "Reviews" or "reviews"?
+    db.collection("assignments")
+        .where("assignmentDocID", "==", assignmentID)
+        .get()
+        .then((allReviews) => {
+            let reviews = allReviews.docs;
+            console.log("Reviews found:", reviews);
+            reviews.forEach((doc) => {
+                let title = doc.data().title;
+                let description = doc.data().description;
+                let dueDate = doc.data().dueDate;
+                let urgency = doc.data().urgency;
+                let time = doc.data().timestamp.toDate();
+                console.log(time);
+
+                let reviewCard = assignmentCardTemplate.content.cloneNode(true);
+                reviewCard.querySelector(".title").innerHTML = title;
+                reviewCard.querySelector(".due-date").innerHTML = `Due Date: ${dueDate}`;
+                reviewCard.querySelector(".description").innerHTML = `Description: ${description}`;
+                reviewCard.querySelector(".urgency").innerHTML = `Urgency: ${urgency}`;
+                reviewCard.querySelector(".time").innerHTML = new Date(time).toLocaleString();
+
+                assignmentCardGroup.appendChild(reviewCard);
+            });
+        });
+}
+
+displayAssignmentInfo();
+populateAssignmentReviews();
