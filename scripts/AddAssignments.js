@@ -5,19 +5,15 @@ var currentUser;
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            currentUser = db.collection("users").doc(user.uid); //global
+            currentUser = db.collection("users").doc(user.uid);
             console.log(currentUser);
 
-            // figure out what day of the week it is today
             const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
             const d = new Date();
             let day = weekday[d.getDay()];
 
-            // the following functions are always called when someone is logged in
-            // readQuote(day);
-            displayCardsDynamically("hikes");
+            displayCardsDynamically("assignments"); 
         } else {
-            // No user is signed in.
             console.log("No user is signed in");
             window.location.href = "login.html";
         }
@@ -86,11 +82,11 @@ doAll();
 // }
 // readQuote("tuesday");        //calling the function
 
-function writeHikes() {
+function writeAssignments() {
     //define a variable for the collection you want to create in Firestore to populate data
-    var hikesRef = db.collection("hikes");
+    var assignmentRef = db.collection("assignments");
 
-    hikesRef.add({
+    assignmentRef.add({
         code: "COMP1800",
         name: "Project 1", //replace with your own city?
         campus: "Vancouver",
@@ -103,7 +99,59 @@ function writeHikes() {
         lng: -122.9187029619698,
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
-    // hikesRef.add({
+    // assignmentRef.add({
+    //     code: "COMP1510",
+    //     name: "Project 1", //replace with your own city?
+    //     campus: "Vancouver",
+    //     province: "BC",
+    //     level: "hard",
+    //     details: "start asap, it is hard",
+    //     length: 10,          //number value
+    //     hike_time: 60,       //number value
+    //     lat: 49.2467097082573,
+    //     lng: -122.9187029619698,
+    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    // });
+    // assignmentRef.add({
+    //     code: "COMP1537",
+    //     name: "Assignment 2", //replace with your own city?
+    //     campus: "Vancouver",
+    //     province: "BC",
+    //     level: "Medium",
+    //     details: "Prety easy but time consuming",
+    //     length: 10,          //number value
+    //     hike_time: 60,       //number value
+    //     lat: 49.2467097082573,
+    //     lng: -122.9187029619698,
+    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    // });
+    // assignmentRef.add({
+    //     code: "COMP1113",
+    //     name: "Quiz 6", //replace with your own city?
+    //     campus: "Vancouver",
+    //     province: "BC",
+    //     level: "easy",
+    //     details: "Make sure to study",
+    //     length: 10,          //number value
+    //     hike_time: 60,       //number value
+    //     lat: 49.2467097082573,
+    //     lng: -122.9187029619698,
+    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    // });
+    // assignmentRef.add({
+    //     code: "COMP1712",
+    //     name: "lab 9", //replace with your own city?
+    //     campus: "Vancouver",
+    //     province: "BC",
+    //     level: "easy",
+    //     details: "teamwork makes the dream work",
+    //     length: 10,          //number value
+    //     hike_time: 60,       //number value
+    //     lat: 49.2467097082573,
+    //     lng: -122.9187029619698,
+    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    // });
+    // assignmentRef.add({
     //     code: "AM01",
     //     name: "Buntzen Lake Trail", //replace with your own city?
     //     city: "Anmore",
@@ -116,7 +164,7 @@ function writeHikes() {
     //     lng: -122.85908496766939,
     //     last_updated: firebase.firestore.Timestamp.fromDate(new Date("March 10, 2022"))
     // });
-    // hikesRef.add({
+    // assignmentRef.add({
     //     code: "NV01",
     //     name: "Mount Seymour Trail", //replace with your own city?
     //     city: "North Vancouver",
@@ -134,12 +182,12 @@ function writeHikes() {
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
 function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("hikeCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+    let cardTemplate = document.getElementById("assignmentCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
     db.collection(collection).get()   //the collection called "hikes"
-        .then(allHikes => {
+        .then(allAssignments => {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allHikes.forEach(doc => { //iterate thru each doc
+            allAssignments.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;       // get value of the "name" key
                 var details = doc.data().details;  // get value of the "details" key
                 var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
