@@ -93,143 +93,202 @@ function writeAssignments() {
         province: "BC",
         level: "easy",
         details: "A lovely place for lunch walk",
-        length: 10,          //number value
-        hike_time: 60,       //number value
-        lat: 49.2467097082573,
-        lng: -122.9187029619698,
+       
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
-    // assignmentRef.add({
-    //     code: "COMP1510",
-    //     name: "Project 1", //replace with your own city?
-    //     campus: "Vancouver",
-    //     province: "BC",
-    //     level: "hard",
-    //     details: "start asap, it is hard",
-    //     length: 10,          //number value
-    //     hike_time: 60,       //number value
-    //     lat: 49.2467097082573,
-    //     lng: -122.9187029619698,
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // assignmentRef.add({
-    //     code: "COMP1537",
-    //     name: "Assignment 2", //replace with your own city?
-    //     campus: "Vancouver",
-    //     province: "BC",
-    //     level: "Medium",
-    //     details: "Prety easy but time consuming",
-    //     length: 10,          //number value
-    //     hike_time: 60,       //number value
-    //     lat: 49.2467097082573,
-    //     lng: -122.9187029619698,
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // assignmentRef.add({
-    //     code: "COMP1113",
-    //     name: "Quiz 6", //replace with your own city?
-    //     campus: "Vancouver",
-    //     province: "BC",
-    //     level: "easy",
-    //     details: "Make sure to study",
-    //     length: 10,          //number value
-    //     hike_time: 60,       //number value
-    //     lat: 49.2467097082573,
-    //     lng: -122.9187029619698,
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // assignmentRef.add({
-    //     code: "COMP1712",
-    //     name: "lab 9", //replace with your own city?
-    //     campus: "Vancouver",
-    //     province: "BC",
-    //     level: "easy",
-    //     details: "teamwork makes the dream work",
-    //     length: 10,          //number value
-    //     hike_time: 60,       //number value
-    //     lat: 49.2467097082573,
-    //     lng: -122.9187029619698,
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // assignmentRef.add({
-    //     code: "AM01",
-    //     name: "Buntzen Lake Trail", //replace with your own city?
-    //     city: "Anmore",
-    //     province: "BC",
-    //     level: "moderate",
-    //     details: "Close to town, and relaxing",
-    //     length: 10.5,      //number value
-    //     hike_time: 80,     //number value
-    //     lat: 49.3399431028579,
-    //     lng: -122.85908496766939,
-    //     last_updated: firebase.firestore.Timestamp.fromDate(new Date("March 10, 2022"))
-    // });
-    // assignmentRef.add({
-    //     code: "NV01",
-    //     name: "Mount Seymour Trail", //replace with your own city?
-    //     city: "North Vancouver",
-    //     province: "BC",
-    //     level: "hard",
-    //     details: "Amazing ski slope views",
-    //     length: 8.2,        //number value
-    //     hike_time: 120,     //number value
-    //     lat: 49.38847101455571,
-    //     lng: -122.94092543551031,
-    //     last_updated: firebase.firestore.Timestamp.fromDate(new Date("January 1, 2023"))
-    // });
+    assignmentRef.add({
+        code: "COMP1510",
+        name: "Project 1", //replace with your own city?
+        campus: "Vancouver",
+        province: "BC",
+        level: "hard",
+        details: "start asap, it is hard",
+       
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    assignmentRef.add({
+        code: "COMP1537",
+        name: "Assignment 2", //replace with your own city?
+        campus: "Vancouver",
+        province: "BC",
+        level: "Medium",
+        details: "Prety easy but time consuming",
+       
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    assignmentRef.add({
+        code: "COMP1113",
+        name: "Quiz 6", //replace with your own city?
+        campus: "Vancouver",
+        province: "BC",
+        level: "easy",
+        details: "Make sure to study",
+       
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    assignmentRef.add({
+        code: "COMP1712",
+        name: "lab 9", //replace with your own city?
+        campus: "Vancouver",
+        province: "BC",
+        level: "easy",
+        details: "teamwork makes the dream work",
+       
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    
+    
 }
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
+
 function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("assignmentCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+    let cardTemplate = document.getElementById("assignmentCardTemplate");
 
-    db.collection(collection).get()   //the collection called "hikes"
+    db.collection(collection).get()
         .then(allAssignments => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allAssignments.forEach(doc => { //iterate thru each doc
-                var title = doc.data().name;       // get value of the "name" key
-                var details = doc.data().details;  // get value of the "details" key
-                var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-                var hikeLength = doc.data().length; //gets the length field
+            allAssignments.forEach(doc => {
+                var assignmentCode = doc.data().code;   
+                var assignmentName = doc.data().name;  
+                var details = doc.data().details;
+                var level = doc.data().level;
+                var campus = doc.data().campus;
                 var docID = doc.id;
-                let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
-                //update title and text and image
-                newcard.querySelector('.card-title').innerHTML = title;
-                newcard.querySelector('.card-length').innerHTML = hikeLength + "km";
-                newcard.querySelector('.card-text').innerHTML = details;
-                newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
-                newcard.querySelector('a').href = "eachHike.html?docID=" + docID;
+                let classContainer = document.getElementById(`class-${assignmentCode}`);
+                if (!classContainer) {
+                    classContainer = document.createElement("div");
+                    classContainer.id = `class-${assignmentCode}`;
+                    classContainer.classList.add("class-container");
 
+                    let classTitle = document.createElement("h3");
+                    classTitle.innerHTML = assignmentCode;  
+                    classContainer.appendChild(classTitle);
+
+                    document.getElementById(collection + "-go-here").appendChild(classContainer);
+                }
+
+                let newcard = cardTemplate.content.cloneNode(true);
+
+                newcard.querySelector('.card-title').innerHTML = assignmentName;
+
+                let upcomingLabel = document.createElement("p");
+                upcomingLabel.innerHTML = "Upcoming Assignment";
+                upcomingLabel.classList.add("upcoming-label");
+                newcard.querySelector('.card-body').insertBefore(
+                    upcomingLabel,
+                    newcard.querySelector('a') 
+                );
+
+                newcard.querySelector('.card-text').innerHTML = `${details} <br> Campus: ${campus} <br> Level: ${level}`;
+
+                newcard.querySelector('.card-image').src = `./images/${assignmentCode}.jpg`;
+
+                newcard.querySelector('a').href = "addassignment.html?docID=" + docID;
 
                 newcard.querySelector('i').id = 'save-' + docID;
-                newcard.querySelector('i').onclick = () => saveBookmark(docID);  //guaranteed to be unique
+                newcard.querySelector('i').onclick = () => saveBookmark(docID);
+
                 currentUser.get().then(userDoc => {
-                    //get the user name
-                    var bookmarks = userDoc.data().bookmarks;
+                    var bookmarks = userDoc.data().bookmarks || [];
                     if (bookmarks.includes(docID)) {
                         document.getElementById('save-' + docID).innerText = 'bookmark';
                     }
-                })
+                });
 
-                // newcard.querySelector('.card-length').innerHTML =
-                //     "Length: " + doc.data().length + " km <br>" +
-                //     "Duration: " + doc.data().hike_time + "min <br>" +
-                //     "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
-
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
-                document.getElementById(collection + "-go-here").appendChild(newcard);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
-            })
-        })
+                classContainer.appendChild(newcard);
+            });
+        });
 }
+
+
+
+// function displayCardsDynamically(collection) {
+//     let cardTemplate = document.getElementById("assignmentCardTemplate"); 
+
+//     db.collection(collection).get()
+//         .then(allAssignments => {
+//             allAssignments.forEach(doc => {
+//                 var title = doc.data().name;       
+//                 var details = doc.data().details;  
+//                 var assignmentCode = doc.data().code;  
+//                 var level = doc.data().level;      
+//                 var campus = doc.data().campus;   
+//                 var docID = doc.id;
+
+//                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card
+
+//                 newcard.querySelector('.card-title').innerHTML = title;
+//                 newcard.querySelector('.card-text').innerHTML = `${details} <br> Campus: ${campus} <br> Level: ${level}`;
+//                 newcard.querySelector('.card-image').src = `./images/${assignmentCode}.jpg`; 
+//                 newcard.querySelector('a').href = "addassignment.html?docID=" + docID;
+
+//                 newcard.querySelector('i').id = 'save-' + docID;
+//                 newcard.querySelector('i').onclick = () => saveBookmark(docID);
+
+//                 currentUser.get().then(userDoc => {
+//                     var bookmarks = userDoc.data().bookmarks || [];
+//                     if (bookmarks.includes(docID)) {
+//                         document.getElementById('save-' + docID).innerText = 'bookmark';
+//                     }
+//                 });
+
+//                 // Attach new card to the gallery for the specified collection
+//                 document.getElementById(collection + "-go-here").appendChild(newcard);
+//             });
+//         });
+// }
+
+// function displayCardsDynamically(collection) {
+//     let cardTemplate = document.getElementById("assignmentCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+
+//     db.collection(collection).get()   //the collection called "hikes"
+//         .then(allAssignments => {
+//             //var i = 1;  //Optional: if you want to have a unique ID for each hike
+//             allAssignments.forEach(doc => { //iterate thru each doc
+//                 var title = doc.data().name;       // get value of the "name" key
+//                 var details = doc.data().details;  // get value of the "details" key
+//                 var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
+//                 // var hikeLength = doc.data().length; //gets the length field
+//                 var docID = doc.id;
+//                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+
+//                 //update title and text and image
+//                 newcard.querySelector('.card-title').innerHTML = title;
+//                 // newcard.querySelector('.card-length').innerHTML = hikeLength + "km";
+//                 newcard.querySelector('.card-text').innerHTML = details;
+//                 newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
+//                 newcard.querySelector('a').href = "addassignement.html?docID=" + docID;
+
+
+//                 newcard.querySelector('i').id = 'save-' + docID;
+//                 newcard.querySelector('i').onclick = () => saveBookmark(docID);  //guaranteed to be unique
+//                 currentUser.get().then(userDoc => {
+//                     //get the user name
+//                     var bookmarks = userDoc.data().bookmarks;
+//                     if (bookmarks.includes(docID)) {
+//                         document.getElementById('save-' + docID).innerText = 'bookmark';
+//                     }
+//                 })
+
+//                 // newcard.querySelector('.card-length').innerHTML =
+//                 //     "Length: " + doc.data().length + " km <br>" +
+//                 //     "Duration: " + doc.data().hike_time + "min <br>" +
+//                 //     "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
+
+//                 //Optional: give unique ids to all elements for future use
+//                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+//                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+//                 // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+//                 //attach to gallery, Example: "hikes-go-here"
+//                 document.getElementById(collection + "-go-here").appendChild(newcard);
+
+//                 //i++;   //Optional: iterate variable to serve as unique ID
+//             })
+//         })
+// }
 
 // displayCardsDynamically("hikes");  //input param is the name of the collection
 
