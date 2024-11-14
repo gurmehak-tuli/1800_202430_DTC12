@@ -12,7 +12,7 @@ function doAll() {
             const d = new Date();
             let day = weekday[d.getDay()];
 
-            displayCardsDynamically("assignments"); 
+            displayCardsDynamically("assignments");
         } else {
             console.log("No user is signed in");
             window.location.href = "login.html";
@@ -88,56 +88,66 @@ function writeAssignments() {
 
     assignmentRef.add({
         code: "COMP1800",
-        name: "Project 1", //replace with your own city?
+        name: "Project 1",
         campus: "Vancouver",
         province: "BC",
         level: "easy",
         details: "A lovely place for lunch walk",
-       
+
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
     assignmentRef.add({
         code: "COMP1510",
-        name: "Project 1", //replace with your own city?
+        name: "Project 1",
         campus: "Vancouver",
         province: "BC",
         level: "hard",
         details: "start asap, it is hard",
-       
+
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
     assignmentRef.add({
         code: "COMP1537",
-        name: "Assignment 2", //replace with your own city?
+        name: "Assignment 2",
         campus: "Vancouver",
         province: "BC",
         level: "Medium",
         details: "Prety easy but time consuming",
-       
+
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
     assignmentRef.add({
         code: "COMP1113",
-        name: "Quiz 6", //replace with your own city?
+        name: "Quiz 6",
         campus: "Vancouver",
         province: "BC",
         level: "easy",
         details: "Make sure to study",
-       
+
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
     assignmentRef.add({
         code: "COMP1712",
-        name: "lab 9", //replace with your own city?
+        name: "lab 9",
         campus: "Vancouver",
         province: "BC",
         level: "easy",
         details: "teamwork makes the dream work",
-       
+
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
-    
-    
+    assignmentRef.add({
+        code: "COMP1116",
+        name: "huristics paper ",
+        campus: "Vancouver",
+        province: "BC",
+        level: "hard",
+        details: "work in 1800 team, it is hard",
+
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+
+
 }
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
@@ -149,11 +159,13 @@ function displayCardsDynamically(collection) {
     db.collection(collection).get()
         .then(allAssignments => {
             allAssignments.forEach(doc => {
-                var assignmentCode = doc.data().code;   
-                var assignmentName = doc.data().name;  
-                var details = doc.data().details;
-                var level = doc.data().level;
-                var campus = doc.data().campus;
+                var assignmentData = doc.data();
+                var assignmentCode = assignmentData.code;
+                var assignmentName = assignmentData.name;
+                var details = assignmentData.details;
+                var level = assignmentData.level;
+                var campus = assignmentData.campus;
+                var imageSrc = assignmentData.image;
                 var docID = doc.id;
 
                 let classContainer = document.getElementById(`class-${assignmentCode}`);
@@ -163,7 +175,7 @@ function displayCardsDynamically(collection) {
                     classContainer.classList.add("class-container");
 
                     let classTitle = document.createElement("h3");
-                    classTitle.innerHTML = assignmentCode;  
+                    classTitle.innerHTML = assignmentCode;
                     classContainer.appendChild(classTitle);
 
                     document.getElementById(collection + "-go-here").appendChild(classContainer);
@@ -172,15 +184,6 @@ function displayCardsDynamically(collection) {
                 let newcard = cardTemplate.content.cloneNode(true);
 
                 newcard.querySelector('.card-title').innerHTML = assignmentName;
-
-                let upcomingLabel = document.createElement("p");
-                upcomingLabel.innerHTML = "Upcoming Assignment";
-                upcomingLabel.classList.add("upcoming-label");
-                newcard.querySelector('.card-body').insertBefore(
-                    upcomingLabel,
-                    newcard.querySelector('a') 
-                );
-
                 newcard.querySelector('.card-text').innerHTML = `${details} <br> Campus: ${campus} <br> Level: ${level}`;
 
                 newcard.querySelector('.card-image').src = `./images/${assignmentCode}.jpg`;
