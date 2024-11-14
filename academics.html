@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>DTC12 BCIT Project</title>
+    <title>Academics</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!------------------------>
@@ -48,28 +48,38 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <!-- stuff -->
-    <div class="p-3">
-        <div class="row row-cols-1 g-3">
-            <div class="col">
-                <a href="assignments.html" class="text-decoration-none">
-                    <div class="box bg-secondary text-center text-white rounded py-5">
-                        <span class="display-4 fw-bold">Assignments</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <div class="box bg-secondary text-center text-white rounded py-5">
-                    <span class="display-4 fw-bold">Current Schedule</span>
-                </div>
-            </div>
-            <div class="col">
-                <div class="box bg-secondary text-center text-white rounded py-5">
-                    <span class="display-4 fw-bold">Announcements</span>
-                </div>
+    <div class="container-fluid bg-light text-dark p-5">
+        <div class="container bg-light p-5">
+            <h1 class="display-4">Academics</h1>
+            <!-- <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1> -->
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Classes</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="assignments-go-here" class="row row-cols-auto">
             </div>
         </div>
     </div>
+    <!-- Templates for general use, not displayed -->
+    <template id="assignmentCardTemplate">
+        <div class="card py-2 mx-2" style="width: 45rem">
+            <img class="card-image card-img-top" src="..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5> 
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href">See all</a>
+                <i class="material-icons">bookmark_border</i>
+            </div>
+        </div>
+    </template>
+
+
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -79,7 +89,8 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/AddAssignments.js"></script>
 
 </body>
 
