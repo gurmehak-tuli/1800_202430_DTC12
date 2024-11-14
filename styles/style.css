@@ -149,3 +149,29 @@ footer .material-icons {
 footer .material-icons:hover {
     color: #4CAF50;
 }
+
+.upcoming-label {
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.class-container {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.class-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.upcoming-label {
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
