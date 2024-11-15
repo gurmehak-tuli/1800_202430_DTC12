@@ -147,8 +147,8 @@ function addAssignment() {
     console.log("Adding assignment...");
     let assignmentTitle = document.getElementById("title").value;
     let assignmentDescription = document.getElementById("description").value;
-    let assignmentDueDate = document.getElementById("Due Date").value;
-    let assignmentUrgancy = document.getElementById("Urgancy").value;
+    let assignmentDueDate = document.getElementById("due date").value;
+    let assignmentUrgancy = document.getElementById("urgancy").value;
     
     
     console.log(assignmentTitle, assignmentDescription, assignmentDueDate, assignmentUrgancy);
