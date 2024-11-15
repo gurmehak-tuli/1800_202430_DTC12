@@ -165,7 +165,7 @@ function displayCardsDynamically(collection) {
                 var details = assignmentData.details;
                 var level = assignmentData.level;
                 var campus = assignmentData.campus;
-                var imageSrc = assignmentData.image;
+                // var imageSrc = assignmentData.image;
                 var docID = doc.id;
 
                 let classContainer = document.getElementById(`class-${assignmentCode}`);
@@ -188,7 +188,7 @@ function displayCardsDynamically(collection) {
 
                 newcard.querySelector('.card-image').src = `./images/${assignmentCode}.jpg`;
 
-                newcard.querySelector('a').href = "addassignment.html?docID=" + docID;
+                newcard.querySelector('a').href = "addassignments.html?docID=" + docID;
 
                 newcard.querySelector('i').id = 'save-' + docID;
                 newcard.querySelector('i').onclick = () => saveBookmark(docID);
@@ -204,7 +204,62 @@ function displayCardsDynamically(collection) {
             });
         });
 }
+// let currentUser = null;
 
+// firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//         currentUser = user;
+//     }
+// });
+
+// function displayCardsDynamically(collection) {
+//     let cardTemplate = document.getElementById("assignmentCardTemplate");
+
+//     db.collection(collection).get()
+//         .then(allAssignments => {
+//             allAssignments.forEach(doc => {
+//                 var assignmentData = doc.data();
+//                 var assignmentName = assignmentData.name;
+//                 var details = assignmentData.details;
+//                 var urgency = assignmentData.urgency;
+//                 var docID = doc.id;
+//                 let newcard = cardTemplate.content.cloneNode(true); 
+
+//                 newcard.querySelector('.card-title').innerHTML = assignmentName;
+//                 newcard.querySelector('.card-urgency').innerHTML = urgency;
+//                 newcard.querySelector('.card-text').innerHTML = details;
+//                 newcard.querySelector('.card-image').src = `./images/${assignmentData.code}.jpg`;
+//                 newcard.querySelector('a').href = "eachAssignment.html?docID=" + docID;
+
+                
+                // newcard.querySelector('i').onclick = () => saveBookmark(docID);  
+                // currentUser.get().then(userDoc => {
+                //     //get the user name
+                //     var bookmarks = userDoc.data().bookmarks;
+                //     if (bookmarks.includes(docID)) {
+                //         document.getElementById('save-' + docID).innerText = 'bookmark';
+                //     }
+                // })
+
+                // newcard.querySelector('.card-length').innerHTML =
+                //     "Length: " + doc.data().length + " km <br>" +
+                //     "Duration: " + doc.data().hike_time + "min <br>" +
+                //     "Last updated: " + doc.data().last_updated.toDate().toLocaleDateString();
+
+                //Optional: give unique ids to all elements for future use
+                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+                //attach to gallery, Example: "hikes-go-here"
+//                 document.getElementById(collection + "-go-here").appendChild(newcard);
+
+//                 //i++;   //Optional: iterate variable to serve as unique ID
+//             })
+//         })
+// }
+
+// displayCardsDynamically("hikes");  //input param is the name of the collection
 
 
 // function displayCardsDynamically(collection) {

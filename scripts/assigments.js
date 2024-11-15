@@ -1,22 +1,20 @@
-var currentUser
+// var currentUser
 
-firebase.auth().onAuthStateChanged((user) => {
-    currentUser = user;
-})
+// firebase.auth().onAuthStateChanged((user) => {
+//     currentUser = user;
+// })
 
+// function getAllAssignments() {
+//     db.collection("users").doc("hx6UKSV0M4QjljI830sJZUL9Idw2").collection("classes").get().then(classes => {
+//         for (theclass of classes.docs) {
+//             theclassdata = theclass.data();
 
+//             // displayClassName({ ...theclassdata.data(), id: theclassdata.id })
+//             // getAssignmentInfo(theclass.ref.collection("assignments"))
 
-function getAllAssignments() {
-    db.collection("users").doc("hx6UKSV0M4QjljI830sJZUL9Idw2").collection("classes").get().then(classes => {
-        for (theclass of classes.docs) {
-            theclassdata = theclass.data();
-
-            // displayClassName({ ...theclassdata.data(), id: theclassdata.id })
-            // getAssignmentInfo(theclass.ref.collection("assignments"))
-
-        }
-    })
-}
+//         }
+//     })
+// }
 
 // function displayClassName(theClass) {
 //     theName = theClass.name;
@@ -77,40 +75,102 @@ function getAllAssignments() {
 //     window.location.href = 'addassignment.html';
 // }
 
-function populateAssignmentReviews() {
-    console.log("Fetching assignment info...");
-    let assignmentCardTemplate = document.getElementById("assignmentCardTemplate");
-    let assignmentCardGroup = document.getElementById("assignmentCardGroup");
+// var assignemntDocID = localStorage.getItem("assignmentDocID");    //visible to all functions on this page
 
-    let params = new URL(window.location.href); // Get the URL from the search bar
-    let assignmentID = params.searchParams.get("docID");
+// function getAssignmentName(id) {
+//     db.collection("added assignemnts")
+//         .doc(id)
+//         .get()
+//         .then((thisAssignment) => {
+//             var hikeName = thisAssignment.data().name;
+//             document.getElementById("assignmentName").innerHTML = hikeName;
+//         });
+// }
 
-    // Double-check: is your collection called "Reviews" or "reviews"?
-    db.collection("assignments")
-        .where("assignmentDocID", "==", assignmentID)
+// getAssignmentName(assignemntDocID);
+
+// function writeAssignments() {
+//     window.location.href = 'thanks.html';
+// }
+// var currentUser = localStorage.getItem("currentUser");
+// function populateAssignmentReviews() {
+//     console.log("Fetching assignment info...");
+//     let assignmentCardTemplate = document.getElementById("assignmentCardTemplate");
+//     let assignmentCardGroup = document.getElementById("assignmentCardGroup");
+
+//     let params = new URL(window.location.href); // Get the URL from the search bar
+//     let assignmentID = params.searchParams.get("docID");
+
+//     db.collection("added assignments")
+//         .where("assignmentDocID", "==", assignmentID)
+//         .get()
+//         .then((allAssignments) => {
+//             let assignments = allAssignments.docs;
+//             console.log("assignemnts added:", assignments);
+//             assignment.forEach((doc) => {
+//                 let title = document.data().title;
+//                 let description = document.data().description;
+//                 let dueDate = document.data().dueDate;
+//                 let urgency = document.data().urgency;
+//                 let time = document.data().timestamp.toDate();
+//                 console.log(time);
+
+//                 let reviewCard = assignmentCardTemplate.content.cloneNode(true);
+//                 reviewCard.querySelector(".title").innerHTML = title;
+//                 reviewCard.querySelector(".due-date").innerHTML = `Due Date: ${dueDate}`;
+//                 reviewCard.querySelector(".description").innerHTML = `Description: ${description}`;
+//                 reviewCard.querySelector(".urgency").innerHTML = `Urgency: ${urgency}`;
+//                 reviewCard.querySelector(".time").innerHTML = new Date(time).toLocaleString();
+
+//                 assignmentCardGroup.appendChild(reviewCard);
+//             });
+//         });
+// }
+
+// getAssignmentInfo();
+// populateAssignmentReviews();
+
+var assignmentDocID = localStorage.getItem("assignmentDocID");    //visible to all functions on this page
+
+function getAssignmentName(id) {
+    db.collection("added assignemnts")
+        .doc(id)
         .get()
-        .then((allReviews) => {
-            let reviews = allReviews.docs;
-            console.log("Reviews found:", reviews);
-            reviews.forEach((doc) => {
-                let title = doc.data().title;
-                let description = doc.data().description;
-                let dueDate = doc.data().dueDate;
-                let urgency = doc.data().urgency;
-                let time = doc.data().timestamp.toDate();
-                console.log(time);
-
-                let reviewCard = assignmentCardTemplate.content.cloneNode(true);
-                reviewCard.querySelector(".title").innerHTML = title;
-                reviewCard.querySelector(".due-date").innerHTML = `Due Date: ${dueDate}`;
-                reviewCard.querySelector(".description").innerHTML = `Description: ${description}`;
-                reviewCard.querySelector(".urgency").innerHTML = `Urgency: ${urgency}`;
-                reviewCard.querySelector(".time").innerHTML = new Date(time).toLocaleString();
-
-                assignmentCardGroup.appendChild(reviewCard);
-            });
+        .then((thisAssignment) => {
+            var hikeName = thisAssignment.data().name;
+            document.getElementById("assignmentName").innerHTML = hikeName;
         });
 }
 
-//getAssignmentInfo();
-//populateAssignmentReviews();
+
+function addAssignment() {
+    console.log("Adding assignment...");
+    let assignmentTitle = document.getElementById("title").value;
+    let assignmentDescription = document.getElementById("description").value;
+    let assignmentDueDate = document.getElementById("Due Date").value;
+    let assignmentUrgancy = document.getElementById("Urgancy").value;
+    
+    
+    console.log(assignmentTitle, assignmentDescription, assignmentDueDate, assignmentUrgancy);
+
+    var user = firebase.auth().currentUser;
+    if (user) {
+        var currentUser = db.collection("added assignments").doc(user.uid);
+        var userID = user.uid;
+
+        db.collection("added assignments").add({
+            assignmentDocID: assignmentDocID,
+            // assignementID: assignmentID,
+            title: assignmentTitle,
+            description: assignmentDescription,
+            dueDate: assignmentDueDate,
+            urgency: assignmentUrgancy,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+            window.location.href = "thanks.html"; 
+        });
+    } else {
+        console.log("No user is signed in");
+        window.location.href = 'review.html';
+    }
+}
