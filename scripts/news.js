@@ -16,7 +16,7 @@ function populateNewsCards() {
 
                 newsCard.querySelector(".headline").innerHTML = headline;
                 newsCard.querySelector(".subheading").innerHTML = subheading;
-                newsCard.querySelector(".description").innerHTML = description;
+                // newsCard.querySelector(".description").innerHTML = description;
 
                 let imgElement = newsCard.querySelector(".news-img");
                 imgElement.src = imageUrl || "https://via.placeholder.com/300";
