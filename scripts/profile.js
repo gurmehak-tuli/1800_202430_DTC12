@@ -12,6 +12,7 @@ function populateUserInfo() {
                     //get the data fields of the user
                     let userName = userDoc.data().name;
                     let userSchool = userDoc.data().school;
+                    let userSet = userDoc.data().set;
                     let userCity = userDoc.data().city;
                     let userCountry = userDoc.data().country;
 
@@ -21,6 +22,10 @@ function populateUserInfo() {
                     }
                     if (userSchool != null) {
                         document.getElementById("schoolInput").value = userSchool;
+                    }
+                    if (userSet != null) {
+                        document.getElementById("setInput").value = userSet;
+                        localStorage.setItem("set", userSet);
                     }
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
@@ -45,13 +50,15 @@ function saveUserInfo() {
     //enter code here
 
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
+    userSchool = document.getElementById('schoolInput').value;
+    userSet = document.getElementById('setInput').value;    //get the value of the field with id="schoolInput"
     userCity = document.getElementById('cityInput').value;
     userCountry = document.getElementById('countryInput').value;    //get the value of the field with id="cityInput"
 
     currentUser.update({
         name: userName,
         school: userSchool,
+        set: userSet,
         city: userCity,
         country: userCountry
     })
