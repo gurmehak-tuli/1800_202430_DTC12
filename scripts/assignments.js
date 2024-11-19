@@ -159,7 +159,7 @@ function addAssignment() {
         var userID = user.uid;
 
         db.collection("added assignments").add({
-            assignmentDocID: assignmentDocID,
+            // assignmentDocID: assignmentDocID,
             // assignementID: assignmentID,
             title: assignmentTitle,
             description: assignmentDescription,
@@ -174,3 +174,47 @@ function addAssignment() {
         window.location.href = 'review.html';
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const assignmentsList = document.getElementById("assignments-list");
+
+    if (!assignmentsList) return;
+
+    db.collection("added assignments")
+        .orderBy("dueDate") 
+        .get()
+        .then(snapshot => {
+            if (snapshot.empty) {
+                const noAssignments = document.createElement("li");
+                noAssignments.className = "list-group-item";
+                noAssignments.textContent = "No upcoming assignments.";
+                assignmentsList.appendChild(noAssignments);
+                return;
+            }
+
+            snapshot.forEach(doc => {
+                const assignment = doc.data();
+
+                const listItem = document.createElement("li");
+                listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+
+                const name = document.createElement("span");
+                name.textContent = `${assignment.course}: ${assignment.title}`;
+
+                const dueDate = document.createElement("span");
+                dueDate.className = "badge bg-primary rounded-pill";
+                dueDate.textContent = new Date(assignment.dueDate.days).toLocaleDateString();
+
+                listItem.appendChild(name);
+                listItem.appendChild(dueDate);
+                assignmentsList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching assignments: ", error);
+            const errorItem = document.createElement("li");
+            errorItem.className = "list-group-item text-danger";
+            errorItem.textContent = "Failed to load assignments.";
+            assignmentsList.appendChild(errorItem);
+        });
+});
