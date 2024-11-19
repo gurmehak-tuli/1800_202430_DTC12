@@ -159,7 +159,7 @@ function addAssignment() {
         var userID = user.uid;
 
         db.collection("added assignments").add({
-            assignmentDocID: assignmentDocID,
+            // assignmentDocID: assignmentDocID,
             // assignementID: assignmentID,
             title: assignmentTitle,
             description: assignmentDescription,
