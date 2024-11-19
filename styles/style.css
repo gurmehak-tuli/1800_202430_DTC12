@@ -226,7 +226,14 @@ body{
     width: 250px;
     padding: 10px 14px;
     background: var(--sidebar-colour);
-    
+    transition: var(--tran-03);
+}
+
+.sidebar.close .text{
+    opacity: 0;}
+
+.sidebar.close {
+    width: 80px;
 }
 
 .sidebar li{
@@ -298,7 +305,7 @@ header .image-text .header-text{
 }
 
 .sidebar .search-box{
-    background: var(--primary-colour-light);
+    background: var(--sidebar-colour);
 
 }
 
@@ -308,7 +315,7 @@ header .image-text .header-text{
     outline: none; 
     border: none; 
     border-radius: 6px;
-    background: var(--primary-colour-light);
+    background: var(--toggle-colour);
     
 }
 

@@ -168,7 +168,7 @@ function displayCardsDynamically(collection) {
                 // var imageSrc = assignmentData.image;
                 var docID = doc.id;
 
-                let classContainer = document.getElementById(`class-${assignmentCode}`);
+                let classContainer = document.getElementById(`assigmentCardGroup`);
                 if (!classContainer) {
                     classContainer = document.createElement("div");
                     classContainer.id = `class-${assignmentCode}`;
