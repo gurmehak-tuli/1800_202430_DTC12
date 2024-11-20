@@ -1,35 +1,22 @@
-function populateNewsCards() {
-    let newsCardTemplate = document.getElementById("newsCardTemplate");
-    let newsCardGroup = document.getElementById("newsCardGroup");
-
-    db.collection("news")
-        .get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                let newsData = doc.data();
-                let headline = newsData.headline;
-                let subheading = newsData.subheading;
-                let description = newsData.description;
-                let imageUrl = newsData.imageUrl;
-
-                let newsCard = newsCardTemplate.content.cloneNode(true);
-
-                newsCard.querySelector(".headline").innerHTML = headline;
-                newsCard.querySelector(".subheading").innerHTML = subheading;
-                // newsCard.querySelector(".description").innerHTML = description;
-
-                let imgElement = newsCard.querySelector(".news-img");
-                imgElement.src = imageUrl || "https://via.placeholder.com/300";
-
-                let viewMoreBtn = newsCard.querySelector(".view-more-btn");
-                viewMoreBtn.href = `newsDetail.html?docID=${doc.id}`;
-
-                newsCardGroup.appendChild(newsCard);
-            });
-        })
-        .catch((error) => {
-            console.error("Error fetching news data: ", error);
+const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+const RSS_URL = 'https://commons.bcit.ca/news/feed/';
+fetch(PROXY_URL + RSS_URL)
+    .then(response => response.text())
+    .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
+    .then(data => {
+        const items = data.querySelectorAll('item');
+        let html = '';
+        items.forEach(item => {
+            const title = item.querySelector('title').innerHTML;
+            const link = item.querySelector('link').innerHTML;
+            const pubDate = item.querySelector('pubDate').innerHTML;
+            html += `
+                <div class="news-item">
+                    <h2><a href="${link}" target="_blank">${title}</a></h2>
+                    <p class="pub-date">${pubDate}</p>
+                </div>
+            `;
         });
-}
-
-populateNewsCards();
+        document.getElementById('news-container').insertAdjacentHTML('beforeend', html);
+    })
+    .catch(error => console.error('Error:', error));
