@@ -3,6 +3,8 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+            const user = authResult.user; // Get user object
+            const userRef = db.collection("users").doc(user.uid); // Reference user's document
             // User successfully signed in.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
@@ -14,28 +16,49 @@ var uiConfig = {
             // Before this works, you must enable "Firestore" from the firebase console.
             // The Firestore rules must allow the user to write. 
             //------------------------------------------------------------------------------------------
-            var user = authResult.user;                            // get the user object from the Firebase authentication database
-            if (authResult.additionalUserInfo.isNewUser) {         //if new user
-                db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
-                    name: user.displayName,                    //"users" collection
-                    email: user.email,                         //with authenticated user's ID (user.uid)
-                    country: "Canada",                      //optional default profile info      
-                    school: "BCIT"                          //optional default profile info
+            if (authResult.additionalUserInfo.isNewUser) {
+                // Handle new user creation
+                userRef.set({
+                    name: user.displayName,
+                    email: user.email,
+                    country: "Canada",
+                    school: "BCIT",
+                    firstTime: true
                 }).then(function () {
-                    console.log("New user added to firestore");
-                    window.location.assign("main.html");       //re-direct to main.html after signup
+                    console.log("New user added to Firestore.");
+                    window.location.assign("profileFirstTime.html");
                 }).catch(function (error) {
-                    console.log("Error adding new user: " + error);
+                    console.error("Error adding new user to Firestore:", error);
                 });
             } else {
-                return true;
+                userRef.get().then(function (doc) {
+                    if (doc.exists) {
+                        const userData = doc.data();
+
+                        if (userData.firstTime) {
+                            console.log("Redirecting first-time user to profile setup.");
+                            window.location.assign("profileFirstTime.html");
+                            userRef.update({ firstTime: false }).catch(function (error) {
+                                console.error("Error updating firstTime flag:", error);
+                            });
+                        } else {
+                            console.log("Redirecting returning user to main page.");
+                            window.location.assign("main.html");
+                        }
+                    } else {
+                        console.error("User document not found!");
+                    }
+                })
+                    .catch(function (error) {
+                        console.error("Error fetching user document:", error);
+                    });
             }
             return false;
         },
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: "main.html",
+    signInSuccessUrl: "index.html",
     signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
