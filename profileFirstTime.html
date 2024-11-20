@@ -2,52 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>DTC12 BCIT Project</title>
+    <title>My BCIT Project</title>
     <meta name="comp1800 template" content="My 1800 App">
-    <style>
-        #map {
-            height: 500px;
-            /* Adjust as needed */
-            width: 100%;
-            border: solid 2px #ccc;
-        }
-
-        #legend {
-            background-color: white;
-            padding: 10px;
-            border: 1px solid #ccc;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            max-width: 200px;
-            margin-top: 10px;
-            margin-left: 10px;
-            position: absolute;
-            /* This will float it over the map */
-            z-index: 5;
-            /* Ensure it appears above the map */
-        }
-
-        #legend h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        #legend p {
-            margin: 5px 0;
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        #legend span {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-    </style>
 
     <!------------------------>
     <!-- Required meta tags -->
@@ -80,8 +36,6 @@
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4jiPKaQCzQ33POpRNesVo9MPLcXiToZI&libraries=places"
-        defer></script>
 
 </head>
 
@@ -89,41 +43,59 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-
     <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <div class="container-fluid">
-        <h1 class="text-center text-3xl font-bold p-2">BCIT Downtown Campus Map</h1>
-        <div class="row">
-            <iframe href="https://app.mappedin.com/map/6730f814eadd0a000b15efb9?floor=m_f2bc84c7fcda6f9a"
-                title="Mappedin Map" name="Mappedin Map" allow="clipboard-write; web-share" scrolling="no" width="100%"
-                height="350" frameborder="0" style="border:solid 10px #777"
-                src="https://app.mappedin.com/map/6730f814eadd0a000b15efb9">
-            </iframe>
-        </div>
-        <br />
-        <div id="map" class="row"></div>
-        <div id="legend">
-            <h3>Legend</h3>
-            <p><span style="color: red;">●</span> Restaurants</p>
-            <p><span style="color: blue;">●</span> Transit Stations</p>
-        </div>
-        <br />
+    <div class="container">
+        <h1 style="text-align: center;">Please Fill Out The Below Information</h1>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+                </div>
+                <div class="form-group">
+                    <label>Set</label>
+                    <select id="setInput" class="form-control" required>
+                        <option value="" disabled selected>Select your set</option>
+                        <option value="F">F</option>
+                        <option value="E">E</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" id="countryInput" class="form-control" placeholder="Enter your country">
+                </div>
+            </fieldset>
+            <div class="d-flex justify-content-center mt-5">
+                <button type="button" class="btn btn-info me-2" onclick="saveUserInfo()">Save</button>
+                <button type="button" class="btn btn-secondary ms-2" onclick="editUserInfo()">Edit</button>
+            </div>
+            <br />
+            <div class="d-flex justify-content-center mt-5">
+                <a class="btn btn-success btn-lg" href="../main.html">Submit</a>
+            </div>
+        </form>
     </div>
-    </div>
-    <br />
     <!-- our own footer goes here-->
-    <br />
-    <nav id="footerPlaceholder"></nav>
+    <!-- <nav id="footerPlaceholder"></nav> -->
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/places.js"></script>
+    <script src="./scripts/profileFirstTime.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
