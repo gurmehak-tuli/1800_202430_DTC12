@@ -122,6 +122,9 @@ function displayCardsDynamically(collection) {
                 newcard.querySelectorAll('a').forEach(button => {
                     button.href = `addedassignments.html?docID=${docID}`;
                 })
+                newcard.querySelectorAll('a').forEach(button => {
+                    button.href = `addassignments.html?docID=${docID}`;
+                })
                 
                 // .href = "addassignments.html?docID=" + docID;
 
