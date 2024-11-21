@@ -50,60 +50,38 @@
     <!-- the body of your page goes here -->
     <div class="p-3">
         <h2 class="text-center">Add Assignment</h2>
-        <form id="add-assignment-form" onsubmit="addAssignment(); return false;">
-
-            <div class="mb-3">
-                <label for="assignment-title" class="form-label">Assignment Name</label>
-                <input type="text" id="title" class="form-control" required>
-            </div>
+    <form id="add-assignment-form">
+        <input C id="classId">
+        <div class="mb-3">
+            <label for="title" class="form-label">Assignment Name</label>
+            <input type="text" id="title" class="form-control" required>
+        </div>
 
             <div class="mb-3">
                 <label for="assignment-description" class="form-label">Short Description</label>
                 <textarea id="description" class="form-control" rows="3" required></textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="assignment-date" class="form-label">Due Date</label>
-                <input type="date" id="due date" class="form-control" required>
-            </div>
 
             <div class="mb-3">
+                <label for="assignment-date" class="form-label">Due Date</label>
+                <input type="date" id="dueDate" class="form-control" required>
+            </div>
+        
+            <div class="mb-3">
                 <label for="assignment-urgency" class="form-label">Urgency</label>
-                <select id="urgancy" class="form-control" required>
+                <select id="urgency" class="form-control" required>
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                 </select>
             </div>
-
-            <button type="submit" class="btn btn-primary">Add Assignment</button>
-            <a href="academics.html" class="btn btn-secondary">Back to Assignments</a>
         </form>
-    </div>
 
-    <!-- <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const classId = urlParams.get('class'); 
-
-        function submitAssignment() {
-            const title = document.getElementById("assignment-title").value;
-            const description = document.getElementById("assignment-description").value;
-            const dueDate = document.getElementById("assignment-date").value;
-            const urgency = document.getElementById("assignment-urgency").value;
-
-            db.collection(classId).add({
-                title: title,
-                description: description,
-                dueDate: dueDate,
-                urgency: urgency
-            }).then(() => {
-                alert("Assignment added successfully!");
-                window.location.href = "assignments.html"; 
-            }).catch((error) => {
-                console.error("Error adding assignment: ", error);
-            });
-        }
-    </script> -->
+            <button type="button" class="btn btn-primary" onclick="addAssignment()">Add Assignment</button>
+            <a href="academics.html" class="btn btn-secondary">Back to Assignments</a>
+    </form>
+    
 
 
     <!-- our own footer goes here-->

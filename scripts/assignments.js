@@ -1,220 +1,137 @@
-// var currentUser
-
-// firebase.auth().onAuthStateChanged((user) => {
-//     currentUser = user;
-// })
-
-// function getAllAssignments() {
-//     db.collection("users").doc("hx6UKSV0M4QjljI830sJZUL9Idw2").collection("classes").get().then(classes => {
-//         for (theclass of classes.docs) {
-//             theclassdata = theclass.data();
-
-//             // displayClassName({ ...theclassdata.data(), id: theclassdata.id })
-//             // getAssignmentInfo(theclass.ref.collection("assignments"))
-
-//         }
-//     })
-// }
-
-// function displayClassName(theClass) {
-//     theName = theClass.name;
-//     id = theClass.id;
-
-//     new_URL = new URL("addassignments.html", window.location.href);
-//     new_URL.searchParams.append("id", theClass.id);
-
-//     classes = document.getElementById("classes");
-//     classes.innerHTML +=
-//         `<div class="row">
-//         <div class="col-md-4" id="comp1510">
-//             <h2>${theName}</h2>
-//             <ul class="list-group" id="assignment-list-comp1510"></ul>
-//             <a href="${new_URL}" class="btn btn-primary mt-2">Add Assignment</a>
-//         </div>
-//     </div>`;
-// }
 
 
-// function getAssignmentInfo(assignments) {
-//     let params = new URL(window.location.href); //get URL of search bar
-//     let ID = params.searchParams.get("docID"); //get value for key "id"
-//     console.log(ID);
+let currentUser;
 
-//     // doublecheck: is your collection called "Reviews" or "reviews"?
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = user;
 
-//     assignments.get().then(doc => {
-//         for (assignment of doc.docs) {
+        const currentPage = window.location.pathname;
+        if (currentPage.includes('academics.html')) {
+            displayClasses();
+        } else if (currentPage.includes('addedassignments.html')) {
+            const classId = new URLSearchParams(window.location.search).get('classId');
+            displayAssignmentCards(classId);
+        } else if (currentPage.includes('addassignments.html')) {
+            const classId = new URLSearchParams(window.location.search).get('classId');
+            document.getElementById('classId').value = classId;
+        }
+    } else {
+        window.location.href = "login.html";
+    }
+});
 
-//             assignmentdoc = assignment.data();
-//             displayAssignmentInfo({ ...assignmentdoc, id: assignment.id });
+function displayClasses() {
+    const container = document.getElementById('assignments-go-here');
+    const template = document.getElementById('assignmentCardTemplate');
 
-//             // thisAssignment = doc.data();
-//             // assignmentCode = doc.data().code;
-//             // assignmentName = doc.data().name;
+    db.collection("users").doc(currentUser.uid).collection("classes").get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                const classData = doc.data();
+                const card = template.content.cloneNode(true);
 
+                card.querySelector('.card-title').textContent = classData.name;
+                card.querySelector('.card-text').textContent = classData.description;
 
+                const addBtn = card.querySelector('.add-assignment-btn');
+                addBtn.href = `addassignments.html?classId=${doc.id}`;
 
-//             document.getElementById("assignmentName").innerHTML = assignmentName;
-//             // let imgEvent = document.querySelector("#assignmentImage");       
-//             // imgEvent.src = "../images/" + assignmentCode + ".jpg";
-//         }
-//     })
-// }
+                const viewBtn = card.querySelector('.view-assignments-btn');
+                viewBtn.href = `addedassignments.html?classId=${doc.id}`;
 
-// function displayAssignmentInfo(assignment) {
-
-//     name = assignment.name;
-
-// }
-
-
-// function saveAssigmentDocumentIDAndRedirect() {
-//     let params = new URL(window.location.href) //get the url from the search bar
-//     let ID = params.searchParams.get("docID");
-//     localStorage.setItem('assignmentDocID', ID);
-//     window.location.href = 'addassignment.html';
-// }
-
-// var assignemntDocID = localStorage.getItem("assignmentDocID");    //visible to all functions on this page
-
-// function getAssignmentName(id) {
-//     db.collection("added assignemnts")
-//         .doc(id)
-//         .get()
-//         .then((thisAssignment) => {
-//             var hikeName = thisAssignment.data().name;
-//             document.getElementById("assignmentName").innerHTML = hikeName;
-//         });
-// }
-
-// getAssignmentName(assignemntDocID);
-
-// function writeAssignments() {
-//     window.location.href = 'thanks.html';
-// }
-// var currentUser = localStorage.getItem("currentUser");
-// function populateAssignmentReviews() {
-//     console.log("Fetching assignment info...");
-//     let assignmentCardTemplate = document.getElementById("assignmentCardTemplate");
-//     let assignmentCardGroup = document.getElementById("assignmentCardGroup");
-
-//     let params = new URL(window.location.href); // Get the URL from the search bar
-//     let assignmentID = params.searchParams.get("docID");
-
-//     db.collection("added assignments")
-//         .where("assignmentDocID", "==", assignmentID)
-//         .get()
-//         .then((allAssignments) => {
-//             let assignments = allAssignments.docs;
-//             console.log("assignemnts added:", assignments);
-//             assignment.forEach((doc) => {
-//                 let title = document.data().title;
-//                 let description = document.data().description;
-//                 let dueDate = document.data().dueDate;
-//                 let urgency = document.data().urgency;
-//                 let time = document.data().timestamp.toDate();
-//                 console.log(time);
-
-//                 let reviewCard = assignmentCardTemplate.content.cloneNode(true);
-//                 reviewCard.querySelector(".title").innerHTML = title;
-//                 reviewCard.querySelector(".due-date").innerHTML = `Due Date: ${dueDate}`;
-//                 reviewCard.querySelector(".description").innerHTML = `Description: ${description}`;
-//                 reviewCard.querySelector(".urgency").innerHTML = `Urgency: ${urgency}`;
-//                 reviewCard.querySelector(".time").innerHTML = new Date(time).toLocaleString();
-
-//                 assignmentCardGroup.appendChild(reviewCard);
-//             });
-//         });
-// }
-
-// getAssignmentInfo();
-// populateAssignmentReviews();
-
-var assignmentDocID = localStorage.getItem("assignmentDocID");    //visible to all functions on this page
-
-function getAssignmentName(id) {
-    db.collection("added assignemnts")
-        .doc(id)
-        .get()
-        .then((thisAssignment) => {
-            var hikeName = thisAssignment.data().name;
-            document.getElementById("assignmentName").innerHTML = hikeName;
+                container.appendChild(card);
+            });
         });
 }
-
 
 function addAssignment() {
-    console.log("Adding assignment...");
-    let assignmentTitle = document.getElementById("title").value;
-    let assignmentDescription = document.getElementById("description").value;
-    let assignmentDueDate = document.getElementById("due date").value;
-    let assignmentUrgancy = document.getElementById("urgancy").value;
-    
-    
-    console.log(assignmentTitle, assignmentDescription, assignmentDueDate, assignmentUrgancy);
+    let params = new URL(window.location.href);
+    let classId = params.searchParams.get('docID');
+    console.log(classId);
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const dueDate = document.getElementById('dueDate').value;
+    const urgency = document.getElementById('urgency').value;
 
-    var user = firebase.auth().currentUser;
-    if (user) {
-        var currentUser = db.collection("added assignments").doc(user.uid);
-        var userID = user.uid;
-
-        db.collection("added assignments").add({
-            // assignmentDocID: assignmentDocID,
-            // assignementID: assignmentID,
-            title: assignmentTitle,
-            description: assignmentDescription,
-            dueDate: assignmentDueDate,
-            urgency: assignmentUrgancy,
+    db.collection("users")
+        .doc(currentUser.uid)
+        .collection("classes")
+        .doc(classId)
+        .collection("assignments")
+        .add({
+            title: title,
+            description: description,
+            dueDate: dueDate,
+            urgency: urgency,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            window.location.href = "thanks.html"; 
+        })
+        .then(() => {
+            alert("Assignment added successfully!");
+            window.location.href = `thanks.html?classId=${classId}`;
+        })
+        .catch((error) => {
+            console.error("Error adding assignment: ", error);
+            alert("Error adding assignment. Please try again.");
         });
-    } else {
-        console.log("No user is signed in");
-        window.location.href = 'review.html';
-    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const assignmentsList = document.getElementById("assignments-list");
+function displayAssignmentCards() {
+    let params = new URL(window.location.href);
+    let classId = params.searchParams.get('docID');
+    // console.log(classId);
+    const cardGroup = document.getElementById("assigmentCardGroup");
+    const template = document.getElementById("savedCardTemplate");
 
-    if (!assignmentsList) return;
+    if (!classId) {
+        cardGroup.innerHTML = '<p class="text-center">No class selected</p>';
+        return;
+    }
 
-    db.collection("added assignments")
-        .orderBy("dueDate") 
+    db.collection("users")
+        .doc(currentUser.uid)
+        .collection("classes")
+        .doc(classId)
+        .collection("assignments")
+        .orderBy("dueDate", "desc")
         .get()
         .then(snapshot => {
             if (snapshot.empty) {
-                const noAssignments = document.createElement("li");
-                noAssignments.className = "list-group-item";
-                noAssignments.textContent = "No upcoming assignments.";
-                assignmentsList.appendChild(noAssignments);
+                cardGroup.innerHTML = '<p class="text-center">No assignments found</p>';
                 return;
             }
 
+            cardGroup.innerHTML = '';
             snapshot.forEach(doc => {
-                const assignment = doc.data();
+                
+                const data = doc.data();
+                const card = template.content.cloneNode(true);
 
-                const listItem = document.createElement("li");
-                listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+                card.querySelector('.card-title').textContent = data.title;
+                card.querySelector('.card-description').textContent = data.description;
+                card.querySelector('.card-due-date').textContent = `Due: ${data.dueDate}`;
+                card.querySelector('.card-urgency').textContent = `Urgency: ${data.urgency}`;
+                // card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
 
-                const name = document.createElement("span");
-                name.textContent = `${assignment.course}: ${assignment.title}`;
+                const cardDiv = card.querySelector('.card');
+                switch (data.urgency.toLowerCase()) {
+                    case 'high':
+                        cardDiv.classList.add('bg-danger', 'text-white');
+                        break;
+                    case 'medium':
+                        cardDiv.classList.add('bg-warning');
+                        break;
+                    case 'low':
+                        cardDiv.classList.add('bg-light');
+                        break;
+                }
 
-                const dueDate = document.createElement("span");
-                dueDate.className = "badge bg-primary rounded-pill";
-                dueDate.textContent = new Date(assignment.dueDate.days).toLocaleDateString();
-
-                listItem.appendChild(name);
-                listItem.appendChild(dueDate);
-                assignmentsList.appendChild(listItem);
+                cardGroup.appendChild(card);
             });
         })
         .catch(error => {
-            console.error("Error fetching assignments: ", error);
-            const errorItem = document.createElement("li");
-            errorItem.className = "list-group-item text-danger";
-            errorItem.textContent = "Failed to load assignments.";
-            assignmentsList.appendChild(errorItem);
+            console.error("Error getting assignments: ", error);
+            cardGroup.innerHTML = '<p class="text-center text-danger">Error loading assignments</p>';
         });
-});
+}
+
