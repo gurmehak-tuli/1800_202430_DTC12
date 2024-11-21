@@ -38,21 +38,26 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    userName = document.getElementById('nameInput').value;
-    userSchool = document.getElementById('schoolInput').value;
-    userSet = document.getElementById('setInput').value;
-    userCity = document.getElementById('cityInput').value;
-    userCountry = document.getElementById('countryInput').value;
+    let userName = document.getElementById('nameInput').value;
+    let userSchool = document.getElementById('schoolInput').value;
+    let userSet = document.getElementById('setInput').value;
+    let userCity = document.getElementById('cityInput').value;
+    let userCountry = document.getElementById('countryInput').value;
     currentUser.update({
         name: userName,
         school: userSchool,
         set: userSet,
         city: userCity,
-        country: userCountry
+        country: userCountry,
+        firstTime: false
     })
         .then(() => {
             console.log("Document successfully updated!");
+            window.location.href = "main.html"; // Redirect to main.html after saving
         })
+        .catch(error => {
+            console.error("Error updating document: ", error);
+        });
 
     document.getElementById('personalInfoFields').disabled = true;
 }
