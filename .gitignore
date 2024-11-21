@@ -3,4 +3,4 @@
 node_modules/
 .vscode/
 scripts/firebaseAPI_DTC12.js
-.trash/
+/trash/
