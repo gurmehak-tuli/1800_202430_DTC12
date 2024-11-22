@@ -29,15 +29,17 @@ function displayPosts() {
                 const post = doc.data();
                 const postCard = `
                     <div class="col-md-6">
-                    <div class="card mb-4">
+                        <div class="card mb-4">
                             <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
+                                <h5 class="card-title">${post.title}</h5>
                                 <p class="card-text">${post.content}</p>
                                 <p class="text-muted">${post.timestamp ? post.timestamp.toDate().toLocaleString() : ''}</p>
+                                <a href="reply.html?postId=${doc.id}" class="btn btn-primary">View & Reply</a>
                             </div>
                         </div>
                     </div>
                     `;
+
                 postGroup.insertAdjacentHTML('beforeend', postCard);
             });
         })
