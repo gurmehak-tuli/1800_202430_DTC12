@@ -28,7 +28,7 @@ function loadSet() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // Reference the current user in Firestore
-            const currentUser = db.collection("users").doc(user.uid);
+            var currentUser = db.collection("users").doc(user.uid);
             currentUser.get().then(doc => {
                 if (doc.exists) {
                     const userSet = doc.data().set;
