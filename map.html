@@ -4,51 +4,6 @@
 <head>
     <title>DTC12 BCIT Project</title>
     <meta name="comp1800 template" content="My 1800 App">
-    <style>
-        #map {
-            height: 500px;
-            /* Adjust as needed */
-            width: 100%;
-            border: solid 5px #ccc;
-        }
-
-        #legend {
-            background-color: white;
-            padding: 10px;
-            border: 1px solid #ccc;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            max-width: 200px;
-            margin-top: 10px;
-            margin-left: 10px;
-            position: absolute;
-            /* This will float it over the map */
-            z-index: 5;
-            /* Ensure it appears above the map */
-        }
-
-        #legend h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        #legend p {
-            margin: 5px 0;
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        #legend span {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-    </style>
-
     <!------------------------>
     <!-- Required meta tags -->
     <!------------------------>
@@ -104,16 +59,6 @@
             </iframe>
         </div>
         <br />
-        <h2 class="text-center text-2xl font-bold p-2">Nearby Restaurants and Transit Stations</h2>
-        <div id="map" class="flex justify-content-between"></div>
-        <div id="legend">
-            <h3>Legend</h3>
-            <p><span style="color: red;">●</span> Restaurants</p>
-            <p><span style="color: blue;">●</span> Transit Stations</p>
-        </div>
-        <!-- Add a faviroutes section linked to users favs and display on left side of the map for easy access -->
-        <br />
-    </div>
     </div>
     <br />
     <!-- our own footer goes here-->
