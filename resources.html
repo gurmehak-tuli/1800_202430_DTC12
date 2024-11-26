@@ -36,6 +36,7 @@
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -48,17 +49,55 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <!-- stuff -->
+    <h1 class="text-center text-3xl font-bold p-2">Hello <span id="name-goes-here"></span>, these are all the contact
+        methods available</h1>
+    <h2 class="text-center text-3xl font-bold">Admins</h1>
+        <section class=" justify-content-between flex align-items: center; m-10 sm:flex-row flex-row">
+            <div class="card p-2 mx-2" style="width: 19rem; align-items: center;">
+                <!-- <img class="card-img-top" src="./images/steak.png" alt="steak" /> -->
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Accessibility Services</h5>
+                    <p class="card-text">
+                        <li>Email</li>
+                        <li>Phone</li>
+                        <a href="https://www.bcit.ca/accessibility/">Click here for help</a>
+                    </p>
+                    <!-- <a class="btn btn-primary" href="event3_details.html">Explore</a> -->
+                </div>
+            </div>
+            <div class="card p-2 mx-2" style="width: 19rem">
+                <!-- <img class="card-img-top" src="./images/arcade.png" alt="arcade" /> -->
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Early Assist</h5>
+                    <p class="card-text">
+                        <li>Email</li>
+                        <li>Phone</li>
+                    </p>
+                    <a class="btn btn-primary" href="https://www.bcit.ca/student-life-office/early-assist/">Get Help
+                        Here</a>
+                </div>
+            </div>
+            <div class="card p-2 mx-2" style="width: 19rem">
+                <!-- <img class="card-img-top" src="./images/biglibrary.jpeg" alt="library" /> -->
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Gurmehak</h5>
+                    <p class="card-text">
+                        <li>Email</li>
+                        <li>Phone</li>
+                    </p>
+                    <!-- <a class="btn btn-primary" href="event3_details.html">Explore</a> -->
+                </div>
+            </div>
+        </section>
+        <!-- our own footer goes here-->
+        <nav id="footerPlaceholder"></nav>
 
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_DTC12.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <script src="./scripts/firebaseAPI_DTC12.js"></script>
+        <script src="./scripts/skeleton.js"></script>
+        <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
