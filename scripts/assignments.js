@@ -111,7 +111,7 @@ function displayAssignmentCards() {
                 card.querySelector('.card-description').textContent = data.description;
                 card.querySelector('.card-due-date').textContent = `Due: ${data.dueDate}`;
                 card.querySelector('.card-urgency').textContent = `Urgency: ${data.urgency}`;
-                // card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
+                card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
 
                 const cardDiv = card.querySelector('.card');
                 switch (data.urgency.toLowerCase()) {
