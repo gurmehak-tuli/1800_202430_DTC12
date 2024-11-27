@@ -22,67 +22,67 @@ function doAll() {
 doAll();
 
 
-function writeAssignments() {
-    //define a variable for the collection you want to create in Firestore to populate data
-    var assignmentRef = db.collection("assignments");
+// function writeAssignments() {
+//     //define a variable for the collection you want to create in Firestore to populate data
+//     var assignmentRef = db.collection("assignments");
 
-    assignmentRef.add({
-        code: "COMP1800",
-        profName: "Hasam Alizadeh",
-        campus: "Vancouver",
-        lectures: "Tuesday 10:20 - 12:20",
-        details: "Will go over...",
+//     assignmentRef.add({
+//         code: "COMP1800",
+//         profName: "Hasam Alizadeh",
+//         campus: "Vancouver",
+//         lectures: "Tuesday 10:20 - 12:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
-    assignmentRef.add({
-        code: "COMP1510",
-        profName: "Chris Tomphson",
-        campus: "Vancouver",
-        lectures: "Thursday 2:30 - 5:20",
-        details: "Will go over...",
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
+//     assignmentRef.add({
+//         code: "COMP1510",
+//         profName: "Chris Tomphson",
+//         campus: "Vancouver",
+//         lectures: "Thursday 2:30 - 5:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
-    assignmentRef.add({
-        code: "COMP1537",
-        profName: "Assignment 2",
-        campus: "Vancouver",
-        lectures: "tuesday 8:30 - 10:20",
-        details: "Will go over...",
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
+//     assignmentRef.add({
+//         code: "COMP1537",
+//         profName: "Assignment 2",
+//         campus: "Vancouver",
+//         lectures: "tuesday 8:30 - 10:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
-    assignmentRef.add({
-        code: "COMP1113",
-        profName: "Julian Fekety",
-        campus: "Vancouver",
-        lectures: "Wednesday 8:30 - 10:20",
-        details: "Will go over...",
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
+//     assignmentRef.add({
+//         code: "COMP1113",
+//         profName: "Julian Fekety",
+//         campus: "Vancouver",
+//         lectures: "Wednesday 8:30 - 10:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
-    assignmentRef.add({
-        code: "COMP1712",
-        profName: "Maryam",
-        campus: "Vancouver",
-        province: "Wednesday 12:30 - 2:20",
-        details: "Will go over...",
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
+//     assignmentRef.add({
+//         code: "COMP1712",
+//         profName: "Maryam",
+//         campus: "Vancouver",
+//         province: "Wednesday 12:30 - 2:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
-    assignmentRef.add({
-        code: "COMP1116",
-        profName: "Sam Lee",
-        campus: "Vancouver",
-        lectures: "Friday 8:30 - 10:20",
-        details: "Will go over...",
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
+//     assignmentRef.add({
+//         code: "COMP1116",
+//         profName: "Sam Lee",
+//         campus: "Vancouver",
+//         lectures: "Friday 8:30 - 10:20",
+//         details: "Will go over...",
 
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    });
+//         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+//     });
 
 
-}
+// }
 
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("assignmentCardTemplate");

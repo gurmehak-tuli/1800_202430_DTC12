@@ -103,7 +103,7 @@ function displayAssignmentCards() {
 
             cardGroup.innerHTML = '';
             snapshot.forEach(doc => {
-                
+
                 const data = doc.data();
                 const card = template.content.cloneNode(true);
 
@@ -112,6 +112,8 @@ function displayAssignmentCards() {
                 card.querySelector('.card-due-date').textContent = `Due: ${data.dueDate}`;
                 card.querySelector('.card-urgency').textContent = `Urgency: ${data.urgency}`;
                 card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
+                card.querySelector('.add-assignment-btn').href = `addassignment.html?docID=${doc.id}`;
+
 
                 const cardDiv = card.querySelector('.card');
                 switch (data.urgency.toLowerCase()) {
