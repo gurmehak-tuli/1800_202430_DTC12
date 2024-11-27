@@ -224,20 +224,25 @@ body{
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 10px 14px;
+    padding: 10px 10px;
     background: var(--sidebar-colour);
     transition: var(--tran-03);
 }
 
 .sidebar.close .text{
-    opacity: 0;}
+    opacity: 0;
+}
+
+.sidebar.close .icon {
+    opacity: 0;
+}
 
 .sidebar.close {
-    width: 80px;
+    width: 0px;
 }
 
 .sidebar li{
-    height: 50px;
+    height: 60px;
     margin-top: 10px;
     list-style: none;
     display: flex;
