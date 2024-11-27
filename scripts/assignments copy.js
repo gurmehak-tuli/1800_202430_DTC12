@@ -47,7 +47,10 @@ function displayClasses() {
 
 function addAssignment() {
     let params = new URL(window.location.href);
-    let classId = params.searchParams.get('docID');
+    // let classId = params.searchParams.get('docID');
+    var userID = currentUser.uid;
+    const classes = db.collection("classes");
+    var classId = db.collection("users").doc(userID).collection("classes").doc(classes.uid);
     console.log(classId);
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
@@ -111,9 +114,7 @@ function displayAssignmentCards() {
                 card.querySelector('.card-description').textContent = data.description;
                 card.querySelector('.card-due-date').textContent = `Due: ${data.dueDate}`;
                 card.querySelector('.card-urgency').textContent = `Urgency: ${data.urgency}`;
-                card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
-                card.querySelector('.add-assignment-btn').href = `addassignment.html?docID=${doc.id}`;
-
+                // card.querySelector('.see-all-btn').href = `addedassignment.html?docID=${doc.id}`;
 
                 const cardDiv = card.querySelector('.card');
                 switch (data.urgency.toLowerCase()) {
