@@ -125,7 +125,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelectorAll('a').forEach(button => {
                     button.href = `addassignments.html?docID=${docID}`;
                 })
-                
+
                 // .href = "addassignments.html?docID=" + docID;
 
                 newcard.querySelector('i').id = 'save-' + docID;
@@ -147,8 +147,8 @@ function displayCardsDynamically(collection) {
 function addAssignment() {
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
-    const dueDate = document.getElementById("due date").value; 
-    const urgency = document.getElementById("urgancy").value; 
+    const dueDate = document.getElementById("due date").value;
+    const urgency = document.getElementById("urgancy").value;
 
     const user = firebase.auth().currentUser;
     if (!user) {
@@ -168,7 +168,7 @@ function addAssignment() {
         })
         .then(() => {
             alert("Assignment added successfully!");
-            window.location.href = "addedassignments.html"; 
+            window.location.href = "addedassignments.html";
         })
         .catch((error) => {
             console.error("Error adding assignment: ", error);
@@ -180,7 +180,7 @@ function addAssignment() {
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
     const dueDate = document.getElementById("due date").value;
-    const urgency = document.getElementById("urgancy").value; 
+    const urgency = document.getElementById("urgancy").value;
     const user = firebase.auth().currentUser;
     if (!user) {
         alert("You need to be logged in to add assignments!");
@@ -199,7 +199,7 @@ function addAssignment() {
         })
         .then(() => {
             alert("Assignment added successfully!");
-            window.location.href = "addedassignments.html"; 
+            window.location.href = "addedassignments.html";
         })
         .catch((error) => {
             console.error("Error adding assignment: ", error);
