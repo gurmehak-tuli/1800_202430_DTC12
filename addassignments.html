@@ -50,11 +50,29 @@
     <!-- the body of your page goes here -->
     <div class="p-3">
         <h2 class="text-center">Add Assignment</h2>
-    <form id="add-assignment-form">
-        <div class="mb-3">
-            <label for="title" class="form-label">Assignment Name</label>
-            <input type="text" id="title" class="form-control" required>
-        </div>
+        <form id="add-assignment-form">
+            <div class="mb-3">
+                <label for="assignment-type" class="form-label">Assignment Type</label>
+                <select id="type" class="form-control" required onchange="toggleOtherTypeInput()">
+                    <option value="Quiz">Quiz</option>
+                    <option value="Test">Test</option>
+                    <option value="Project">Project</option>
+                    <option value="Assignment">Assignment</option>
+                    <option value="Homework">Homework</option>
+                    <option value="Midterm">Meeting</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3" id="otherTypeContainer" style="display: none;">
+                <label for="otherType" class="form-label">Other Assignment Type</label>
+                <input type="text" id="otherType" class="form-control" placeholder="Enter assignment type">
+            </div>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Assignment Name</label>
+                <input type="text" id="title" class="form-control" required>
+            </div>
 
             <div class="mb-3">
                 <label for="assignment-description" class="form-label">Short Description</label>
@@ -66,7 +84,7 @@
                 <label for="assignment-date" class="form-label">Due Date</label>
                 <input type="date" id="dueDate" class="form-control" required>
             </div>
-        
+
             <div class="mb-3">
                 <label for="assignment-urgency" class="form-label">Urgency</label>
                 <select id="urgency" class="form-control" required>
@@ -75,23 +93,24 @@
                     <option value="High">High</option>
                 </select>
             </div>
+
         </form>
 
-            <button type="button" class="btn btn-primary" onclick="addAssignment()">Add Assignment</button>
-            <a href="academics.html" class="btn btn-secondary">Back to Assignments</a>
-    </form>
-    
+        <button type="button" class="btn btn-primary" onclick="addAssignment()">Add Assignment</button>
+        <a href="academics.html" class="btn btn-secondary">Back to Assignments</a>
+        </form>
 
 
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_DTC12.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/assignments.js"></script>
+        <!-- our own footer goes here-->
+        <nav id="footerPlaceholder"></nav>
+
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <script src="./scripts/firebaseAPI_DTC12.js"></script>
+        <script src="./scripts/skeleton.js"></script>
+        <script src="./scripts/dgAddAssignment.js"></script>
 
 </body>
 

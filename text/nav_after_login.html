@@ -1,120 +1,123 @@
-<!-- Google Fonts and Material Icons -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="styles/style.css">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!DOCTYPE html>
+<html lang="en">
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Sidebar</title>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-success bg-white d-flex align-items-center justify-content-between">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center me-4 position-relative">
+    <!-- Google Fonts and Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-            <button class="btn btn-link p-0" onclick="toggleDropdown()">
-                <i class="bi bi-three-dots-vertical fs-5"></i>
+    <!-- External Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- Inline Styles -->
+    <style>
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        #sidebar.active {
+            left: 0;
+        }
+
+        #sidebar .menu-links {
+            padding: 0;
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        #sidebar .menu-links li {
+            padding: 10px 15px;
+        }
+
+        #sidebar .menu-links li a {
+            color: #007ffd;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #sidebar .menu-links li a i {
+            margin-right: 10px;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 9px;
+            left: 15px;
+            z-index: 1030;
+            cursor: pointer;
+            color: #007ffd;
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav
+        class="navbar navbar-expand-lg navbar-light bg-success bg-white d-flex align-items-center justify-content-between">
+        <div class="container-fluid">
+            <button class="btn btn-dark toggle-btn" onclick="toggleSidebar()">
+                <i class="bx bx-menu"></i>
             </button>
-
-            <span class="text-primary fw-bold fs-5 ms-3">BCIT</span>
-
-
-            <!-- <body>
-                <nav class="sidebar close">
-                    <header>
-                        <div class="image-text">
-                            
-                            </span>
-            
-                            <div class="text header-text">
-                                <span class="name text-primary">BCIT</span>
-                                <span class="student">Student</span>
-                            </div>
-            
-            
-                            <i class="bx bx-chevron-right toggle"></i>
-                    </header>
-            
-                    <div class="menu-bar">
-                        <div class="menu">
-                            <li class="search-box">
-                                <i class="bx bx-search icons"></i>
-                                <input type="search" placeholder="Search...">
-                            </li>
-                            <ul class="menu-links">
-                                <li class="nav-link">
-                                    <a href="###">
-                                        <i class="bx bx-home-alt icons "></i>
-                                        <span class="text nav-text">Academics</span>
-                                    </a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="###">
-                                        <i class="bx bx-home-alt icons "></i>
-                                        <span class="text nav-text">Map</span>
-                                    </a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="###">
-                                        <i class="bx bx-home-alt icons "></i>
-                                        <span class="text nav-text">News</span>
-                                    </a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="###">
-                                        <i class="bx bx-home-alt icons "></i>
-                                        <span class="text nav-text">Safety</span>
-                                    </a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="###">
-                                        <i class="bx bx-home-alt icons "></i>
-                                        <span class="text nav-text">Social</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-            
-                        <div class="bottom-content">
-                            <li class="nav-link">
-                                <a href="###">
-                                    <i class="bx bx-home-alt icons "></i>
-                                    <span class="text nav-text">Profile</span>
-                                </a>
-                            </li>
-            
-                        </div>
-            
-                    </div>
-            
-                </nav>
-            </body> -->
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link d-flex align-items-center" href="../profile.html">
-                        <span class="material-icons me-1">person</span> Profile
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../aboutus.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../resources.html">Resources</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../contact.html">Contact Us</a>
-                </li>
-            </ul>
-            <div class="d-flex gap-2">
-                <a class="btn btn-outline-success" href="../map.html">DTC Map</a>
-                <a class="btn btn-outline-success" href="../index.html">Logout</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link d-flex align-items-center text-white" href="../profile.html">
+                            Prof
+                        </a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link d-flex align-items-center" href="../profile.html">
+                            <span class="material-icons me-1">person</span> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../aboutus.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resources.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a class="btn btn-outline-success" href="../map.html">DTC Map</a>
+                    <a class="btn btn-outline-success" href="../index.html">Logout</a>
+                </div>
             </div>
         </div>
+    </nav>
+    <div id="sidebar">
+        <ul class="menu-links">
+            <li><a href="#"><i></i></a></li>
+            <li><a href="#"><i></i></a></li>
+            <li><a href="../main.html"><i class="bx bx-home"></i> Home</a></li>
+            <li><a href="../academics.html"><i class="bx bx-book"></i> Academics</a></li>
+            <li><a href="../map.html"><i class="bx bx-map"></i> Map</a></li>
+            <li><a href="../news.html"><i class="bx bx-news"></i> News</a></li>
+            <li><a href="../profile.html"><i class="bx bx-user"></i> Profile</a></li>
+        </ul>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./scripts/nav.js"></script>
     <script src="./scripts/sidebar.js"></script>
-</nav>
+</body>
+
+</html>
