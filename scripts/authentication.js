@@ -21,8 +21,8 @@ var uiConfig = {
                 userRef.set({
                     name: user.displayName,
                     email: user.email,
-                    country: "Canada",
-                    school: "BCIT",
+                    country: "",
+                    school: "",
                     firstTime: true
                 }).then(function () {
                     console.log("New user added to Firestore.");
@@ -38,9 +38,6 @@ var uiConfig = {
                         if (userData.firstTime) {
                             console.log("Redirecting first-time user to profile setup.");
                             window.location.assign("profileFirstTime.html");
-                            userRef.update({ firstTime: false }).catch(function (error) {
-                                console.error("Error updating firstTime flag:", error);
-                            });
                         } else {
                             console.log("Redirecting returning user to main page.");
                             window.location.assign("main.html");
