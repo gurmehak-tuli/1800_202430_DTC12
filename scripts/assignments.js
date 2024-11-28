@@ -40,7 +40,9 @@ function displayClassesDynamically() {
                 newCard.querySelector(".card-image").alt = classData.name || "N/A";
 
                 const addBtn = newCard.querySelector(".add-assignment-btn");
-                addBtn.href = `addassignments.html?classId=${docID}`;
+                addBtn.addEventListener("click", () => {
+                    window.location.href = `addassignments.html?classId=${docID}`;
+                });
 
                 const viewBtn = newCard.querySelector(".view-assignments-btn");
                 viewBtn.href = `addedassignments.html?classId=${docID}`;
