@@ -77,6 +77,7 @@ function writeAssignments(userId) {
 
             assignmentPromises.push(
                 assignmentsRef.add({
+                    type: "Assignment",
                     title: "Assignment 1",
                     description: "Complete the first task",
                     dueDate: "2024-12-01",
@@ -85,6 +86,7 @@ function writeAssignments(userId) {
                 }),
 
                 assignmentsRef.add({
+                    type: "Assignment",
                     title: "Assignment 2",
                     description: "Prepare for the midterm exam",
                     dueDate: "2024-12-15",
@@ -93,6 +95,7 @@ function writeAssignments(userId) {
                 }),
 
                 assignmentsRef.add({
+                    type: "Assignment",
                     title: "Assignment 3",
                     description: "Submit the group project",
                     dueDate: "2025-01-10",
