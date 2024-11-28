@@ -47,45 +47,69 @@
     <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder"></nav>
 
-    <!-- the body of your page goes here -->
-    <h1 class="text-center text-3xl font-bold p-2">Hello <span id="name-goes-here"></span>, these are all the contact
-        methods available</h1>
-    <h2 class="text-center text-3xl font-bold">Admins</h1>
-        <section class=" justify-content-between flex align-items: center; m-10 sm:flex-row flex-row">
-            <div class="card p-2 mx-2" style="width: 19rem; align-items: center;">
-                <!-- <img class="card-img-top" src="./images/steak.png" alt="steak" /> -->
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Rajan Sidhu</h5>
-                    <p class="card-text">
-                        <li>Email</li>
-                        <li>Phone</li>
-                    </p>
-                    <!-- <a class="btn btn-primary" href="event3_details.html">Explore</a> -->
+    <h1 class="text-center text-4xl font-bold p-6">Hello <span id="name-goes-here">User</span>, here are all the available
+        contact methods</h1>
+    
+    <h2 class="text-center text-3xl font-semibold mb-6">Admins</h2>
+    
+    <section class="container mx-auto px-4">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-4 mb-4">
+                <div class="card p-4 text-center" style="width: 100%; border-radius: 15px;">
+                    <img src="https://i.pinimg.com/736x/00/9b/7c/009b7cd2b2862f239db3746a8611329d.jpg" class="card-img-top rounded-circle mb-3" alt="Rajan Sidhu"
+                        style="max-width: 120px; margin: 0 auto;">
+                    <h5 class="card-title text-2xl font-semibold">Rajan Sidhu</h5>
+                    <ul class="list-unstyled">
+                        <li class="my-2"><i class="bi bi-envelope-fill"></i> jsidhu218@mybcit.ca</li>
+                        <li><i class="bi bi-telephone-fill"></i> 111-111-1111</li>
+                    </ul>
                 </div>
             </div>
-            <div class="card p-2 mx-2" style="width: 19rem">
-                <!-- <img class="card-img-top" src="./images/arcade.png" alt="arcade" /> -->
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Dilinder Garcha</h5>
-                    <p class="card-text">
-                        <li>Email</li>
-                        <li>Phone</li>
-                    </p>
-                    <!-- <a class="btn btn-primary" href="event3_details.html">Explore</a> -->
+            <div class="col-sm-12 col-md-4 mb-4">
+                <div class="card p-4 text-center" style="width: 100%; border-radius: 15px;">
+                    <img src="https://dragonball.guru/wp-content/uploads/2021/01/goku-dragon-ball-guru-150x150.jpg" class="card-img-top rounded-circle mb-3"
+                        alt="Dilinder Garcha" style="max-width: 120px; margin: 0 auto;">
+                    <h5 class="card-title text-2xl font-semibold">Dilinder Garcha</h5>
+                    <ul class="list-unstyled">
+                        <li class="my-2"><i class="bi bi-envelope-fill"></i> dgarcha@mybcit.ca</li>
+                        <li><i class="bi bi-telephone-fill"></i> 222-222-2222</li>
+                    </ul>
                 </div>
             </div>
-            <div class="card p-2 mx-2" style="width: 19rem">
-                <!-- <img class="card-img-top" src="./images/biglibrary.jpeg" alt="library" /> -->
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Gurmehak</h5>
-                    <p class="card-text">
-                        <li>Email</li>
-                        <li>Phone</li>
-                    </p>
-                    <!-- <a class="btn btn-primary" href="event3_details.html">Explore</a> -->
+            <div class="col-sm-12 col-md-4 mb-4">
+                <div class="card p-4 text-center" style="width: 100%; border-radius: 15px;">
+                    <img src="https://avatarfiles.alphacoders.com/228/thumb-350-228649.webp" class="card-img-top rounded-circle mb-3" alt="Gurmehak"
+                        style="max-width: 120px; margin: 0 auto;">
+                    <h5 class="card-title text-2xl font-semibold">Gurmehak Tuli</h5>
+                    <ul class="list-unstyled">
+                        <li class="my-2"><i class="bi bi-envelope-fill"></i> gtuli@mybcit.ca</li>
+                        <li><i class="bi bi-telephone-fill"></i> 333-333-3333</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    <section class="container mx-auto px-4 mt-8">
+        <h2 class="text-center text-3xl font-semibold mb-6">Contact Us</h2>
+        <form action="#" method="POST" class="bg-light p-6 rounded-lg shadow-lg">
+            <div class="form-group mb-4">
+                <label for="name" class="form-label text-lg font-medium">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required placeholder="Your Full Name">
+            </div>
+            <div class="form-group mb-4">
+                <label for="email" class="form-label text-lg font-medium">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Your Email Address">
+            </div>
+            <div class="form-group mb-4">
+                <label for="description" class="form-label text-lg font-medium">Message</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required
+                    placeholder="Write your message here"></textarea>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary text-white px-5 py-2">Submit</button>
+            </div>
+        </form>
+    </section>
 
         <!-- our own footer goes here-->
         <nav id="footerPlaceholder"></nav>
