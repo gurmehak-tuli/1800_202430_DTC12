@@ -1,6 +1,5 @@
-const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-const RSS_URL = 'https://commons.bcit.ca/news/feed/';
-fetch(PROXY_URL + RSS_URL)
+const RSS_URL = 'https://cors-anywhere.herokuapp.com/commons.bcit.ca/news/feed/';
+fetch(RSS_URL)
     .then(response => response.text())
     .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
     .then(data => {
