@@ -45,7 +45,9 @@ function displayClassesDynamically() {
                 });
 
                 const viewBtn = newCard.querySelector(".view-assignments-btn");
-                viewBtn.href = `addedassignments.html?classId=${docID}`;
+                viewBtn.addEventListener("click", () => {
+                    window.location.href = `seeAssignments.html?classId=${docID}`;
+                });
 
                 document.getElementById("assignments-go-here").appendChild(newCard);
             });
