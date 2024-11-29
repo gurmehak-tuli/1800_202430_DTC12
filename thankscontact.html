@@ -36,7 +36,7 @@
     <!-------------------------------------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
@@ -47,40 +47,27 @@
     <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder"></nav>
 
-    
-    <section class="container mx-auto px-4 mt-8">
-        <h2 class="text-center text-3xl font-semibold mb-6">Contact Us</h2>
-        <form action="#" method="POST" class="bg-light p-6 rounded-lg shadow-lg">
-            <div class="form-group mb-4">
-                <label for="name" class="form-label text-lg font-medium">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required placeholder="Your Full Name">
-            </div>
-            <div class="form-group mb-4">
-                <label for="email" class="form-label text-lg font-medium">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required placeholder="Your Email Address">
-            </div>
-            <div class="form-group mb-4">
-                <label for="description" class="form-label text-lg font-medium">Message</label>
-                <textarea class="form-control" id="description" name="description" rows="4" required
-                    placeholder="Write your message here"></textarea>
-            </div>
-            <div class="form-group text-center">
-                <button type="button" class="btn btn-primary text-white px-5 py-2"
-                    onclick="window.location.href='thankscontact.html';">Submit</button>
-            </div>
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+    <div class="card text-center">
+        <div class="card-header">
+            Message successfully sent!
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Thanks for contacting us!</h5>
+            <a href="contact.html" class="btn btn-primary">Back to Contacts</a>
+        </div>
+    </div>
 
-        </form>
-    </section>
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
 
-        <!-- our own footer goes here-->
-        <nav id="footerPlaceholder"></nav>
-
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
-        <script src="./scripts/firebaseAPI_DTC12.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/contactus.js"></script>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <script src="./scripts/firebaseAPI_DTC12.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 
