@@ -46,8 +46,6 @@ function loadAssignments(userID) {
                             <br>
                             <span>Urgency:</span> ${assignment.urgency}
                             <br>
-                            <button class="btn btn-sm btn-primary" onclick="editAssignment('${assignment.id}', '${classID}')">Edit</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteAssignment('${assignment.id}', '${classID}')">Delete</button>
                         `;
                         classAssignmentList.appendChild(listItem);
                     });
@@ -66,6 +64,6 @@ firebase.auth().onAuthStateChanged((user) => {
         loadAssignments(user.uid);
     } else {
         alert("You need to log in to view assignments.");
-        window.location.href = "login.html"; 
+        window.location.href = "login.html";
     }
 });
