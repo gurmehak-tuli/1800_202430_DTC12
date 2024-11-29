@@ -4,3 +4,8 @@ node_modules/
 .vscode/
 scripts/firebaseAPI_DTC12.js
 /trash/
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+.firebase/
