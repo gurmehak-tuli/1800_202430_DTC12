@@ -48,37 +48,34 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- The body of your page goes here -->
-    <div class="container-fluid bg-light text-dark p-5">
+    <div class="container-fluid bg-light text-dark p-1 mb-3">
         <div class="container bg-light p-5">
-            <h1 class="display-4">Academics</h1>
+            <h1 class="display-4 text-center">Courses</h1>
             <hr>
         </div>
-    </div>
 
-    <div class="container">
-        <h1>Classes</h1>
         <div class="container">
-            <div id="assignments-go-here" class="d-flex flex-wrap justify-content-start gap-3">
+            <div id="assignments-go-here" class="d-flex flex-wrap justify-content-center gap-3">
             </div>
         </div>
+
+
+        <template id="assignmentCardTemplate">
+            <div class="card py-3 mb-5" style="width: 560px">
+                <img class="card-image card-img-top" src="..." alt="..." style="width: 100%; height: 10rem" />
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text"></p>
+                    <a class="btn btn-primary add-assignment-btn">Add assignment</a>
+                    <a class="btn btn-primary view-assignments-btn see-all-btn">See All</a>
+                </div>
+            </div>
+        </template>
     </div>
 
-    <template id="assignmentCardTemplate">
-        <div class="card py-3" style="width: 35rem">
-            <img class="card-image card-img-top" src="..." alt="..." style="width: 100%; height: 10rem" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text"></p>
-                <a class="btn btn-primary add-assignment-btn">Add assignment</a>
-                <a class="btn btn-primary view-assignments-btn see-all-btn">See All</a>
-            </div>
-        </div>
-    </template>
 
 
-
-
-
+    <br />
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
 

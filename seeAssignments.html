@@ -48,37 +48,38 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <div class="container">
-        <h1 id="className">Class Name</h1>
+    <div class="container text-center flex justify-content-center align-items-center">
+        <h1 id="className" class="mt-3">Class Name</h1>
         <img id="classImage" class="img-fluid my-4" src="" alt="Class Image">
     </div>
 
-    <div class="container">
+    <div class="container mb-3">
         <div id="assigmentCardGroup" class="row">
         </div>
-    </div>
 
-    <template id="assignmentCardTemplate">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Assignment Title</h5>
-                    <p class="card-text">
-                        <strong>Due Date:</strong> <span class="due-date"></span>
-                        <br>
-                        <strong>Urgency:</strong> <span class="urgency"></span>
-                        <br>
-                        <strong>Description:</strong> <span class="description"></span>
-                        <br>
-                        <strong class="status">Status: Pending</strong>
-                    </p>
-                    <button class="btn btn-secondary edit-btn">Edit</button>
-                    <button class="btn btn-success done-btn">Mark as Done</button>
+
+        <template id="assignmentCardTemplate">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Assignment Title</h5>
+                        <p class="card-text">
+                            <strong>Due Date:</strong> <span class="due-date"></span>
+                            <br>
+                            <strong>Urgency:</strong> <span class="urgency"></span>
+                            <br>
+                            <strong>Description:</strong> <span class="description"></span>
+                            <br>
+                            <strong class="status">Status: Pending</strong>
+                        </p>
+                        <button class="btn btn-secondary edit-btn">Edit</button>
+                        <button class="btn btn-success done-btn">Mark as Done</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </template>
-
+        </template>
+    </div>
+    <br />
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
 
