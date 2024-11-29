@@ -78,6 +78,7 @@ function saveAssignmentToFirestore({ title, description, dueDate, urgency, type,
         dueDate: dueDate,
         urgency: urgency,
         type: type,
+        completed: false,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 }

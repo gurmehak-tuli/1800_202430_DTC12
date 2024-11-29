@@ -39,6 +39,32 @@ function displayClassAndAssignments(userId) {
             assignmentCard.querySelector(".urgency").innerText = assignmentData.urgency;
             assignmentCard.querySelector(".description").innerText = assignmentData.description;
 
+            const editButton = assignmentCard.querySelector(".edit-btn");
+
+            assignmentCard.querySelector(".edit-btn").addEventListener("click", () => {
+                window.location.href = `edittask.html?classId=${classId}&assignmentId=${doc.id}`;
+            });
+
+            const doneButton = assignmentCard.querySelector(".done-btn");
+            if (assignmentData.completed) {
+                doneButton.innerText = "Completed";
+                doneButton.disabled = true;
+                assignmentCard.querySelector(".status").innerText = "Status: Completed";
+            } else {
+                doneButton.addEventListener("click", () => {
+                    classDocRef.collection("assignments").doc(doc.id).update({
+                        completed: true
+                    }).then(() => {
+                        doneButton.innerText = "Completed";
+                        doneButton.disabled = true;
+                        assignmentCard.querySelector(".status").innerText = "Status: Completed";
+                        alert("Assignment marked as completed.");
+                    }).catch((error) => {
+                        console.error("Error marking assignment as done:", error);
+                    });
+                });
+            }
+
             assignmentsContainer.appendChild(assignmentCard);
         });
     }).catch((error) => {

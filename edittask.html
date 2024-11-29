@@ -48,36 +48,56 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <div class="container">
-        <h1 id="className">Class Name</h1>
-        <img id="classImage" class="img-fluid my-4" src="" alt="Class Image">
-    </div>
-
-    <div class="container">
-        <div id="assigmentCardGroup" class="row">
-        </div>
-    </div>
-
-    <template id="assignmentCardTemplate">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Assignment Title</h5>
-                    <p class="card-text">
-                        <strong>Due Date:</strong> <span class="due-date"></span>
-                        <br>
-                        <strong>Urgency:</strong> <span class="urgency"></span>
-                        <br>
-                        <strong>Description:</strong> <span class="description"></span>
-                        <br>
-                        <strong class="status">Status: Pending</strong>
-                    </p>
-                    <button class="btn btn-secondary edit-btn">Edit</button>
-                    <button class="btn btn-success done-btn">Mark as Done</button>
-                </div>
+    <!-- stuff -->
+    <div class="p-3">
+        <h2 class="text-center">Add Assignment</h2>
+        <form id="add-assignment-form">
+            <div class="mb-3">
+                <label for="assignment-type" class="form-label">Assignment Type</label>
+                <select id="type" class="form-control" required onchange="toggleOtherTypeInput()">
+                    <option value="Quiz">Quiz</option>
+                    <option value="Test">Test</option>
+                    <option value="Project">Project</option>
+                    <option value="Assignment">Assignment</option>
+                    <option value="Homework">Homework</option>
+                    <option value="Midterm">Meeting</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
-        </div>
-    </template>
+
+            <div class="mb-3" id="otherTypeContainer" style="display: none;">
+                <label for="otherType" class="form-label">Other Assignment Type</label>
+                <input type="text" id="otherType" class="form-control" placeholder="Enter assignment type">
+            </div>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Assignment Name</label>
+                <input type="text" id="title" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="assignment-description" class="form-label">Short Description</label>
+                <textarea id="description" class="form-control" rows="3" required></textarea>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="assignment-date" class="form-label">Due Date</label>
+                <input type="date" id="dueDate" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="assignment-urgency" class="form-label">Urgency</label>
+                <select id="urgency" class="form-control" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <button type="submit" id="saveButton" class="btn btn-primary">Save Changes</button>
+            <a href="academics.html" id="cancelButton" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -87,8 +107,8 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_DTC12.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/assignments.js"></script>
-    <script src="./scripts/seeAssignments.js"></script>
+    <script src="./scripts/edittask.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
 
 </body>
 

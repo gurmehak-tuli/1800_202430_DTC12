@@ -82,6 +82,7 @@ function writeAssignments(userId) {
                     description: "Complete the first task",
                     dueDate: "2024-12-01",
                     urgency: "High",
+                    completed: false,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }),
 
@@ -91,6 +92,7 @@ function writeAssignments(userId) {
                     description: "Prepare for the midterm exam",
                     dueDate: "2024-12-15",
                     urgency: "Medium",
+                    completed: false,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }),
 
@@ -100,6 +102,7 @@ function writeAssignments(userId) {
                     description: "Submit the group project",
                     dueDate: "2025-01-10",
                     urgency: "Low",
+                    completed: false,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 }),
             );
