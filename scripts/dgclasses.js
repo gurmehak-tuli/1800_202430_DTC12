@@ -94,9 +94,7 @@ function displayCardsDynamically(collection) {
                 var assignmentCode = assignmentData.code;
                 var assignmentName = assignmentData.name;
                 var details = assignmentData.details;
-                // var level = assignmentData.level;
                 var campus = assignmentData.campus;
-                // var imageSrc = assignmentData.image;
                 var docID = doc.id;
 
                 let classContainer = document.getElementById(`assigmentCardGroup`);
@@ -125,19 +123,8 @@ function displayCardsDynamically(collection) {
                 newcard.querySelectorAll('a').forEach(button => {
                     button.href = `addassignments.html?docID=${docID}`;
                 })
-                
-                // .href = "addassignments.html?docID=" + docID;
-
                 newcard.querySelector('i').id = 'save-' + docID;
                 newcard.querySelector('i').onclick = () => saveBookmark(docID);
-
-                // currentUser.get().then(userDoc => {
-                //     var bookmarks = userDoc.data().bookmarks || [];
-                //     if (bookmarks.includes(docID)) {
-                //         document.getElementById('save-' + docID).innerText = 'bookmark';
-                //     }
-                // });
-
                 classContainer.appendChild(newcard);
             });
         });
@@ -151,10 +138,6 @@ function addAssignment() {
     const urgency = document.getElementById("urgancy").value; 
 
     const user = firebase.auth().currentUser;
-    if (!user) {
-        alert("You need to be logged in to add assignments!");
-        return;
-    }
 
     db.collection("users")
         .doc(user.uid)
@@ -182,10 +165,6 @@ function addAssignment() {
     const dueDate = document.getElementById("due date").value;
     const urgency = document.getElementById("urgancy").value; 
     const user = firebase.auth().currentUser;
-    if (!user) {
-        alert("You need to be logged in to add assignments!");
-        return;
-    }
 
     db.collection("users")
         .doc(user.uid)

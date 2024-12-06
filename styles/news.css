@@ -1,0 +1,26 @@
+        .news-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .news-item h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .news-item a {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+
+        .news-item a:hover {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+
+        .pub-date {
+            color: #777;
+            font-size: 0.9em;
+        }

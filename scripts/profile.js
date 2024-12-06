@@ -42,13 +42,10 @@ function populateUserInfo() {
 }
 
 function editUserInfo() {
-    //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
 }
 
 function saveUserInfo() {
-    //enter code here
-
     userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
     userSchool = document.getElementById('schoolInput').value;
     userSet = document.getElementById('setInput').value;    //get the value of the field with id="schoolInput"

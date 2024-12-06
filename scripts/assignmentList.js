@@ -58,12 +58,3 @@ function loadAssignments(userID) {
         console.error("Error fetching classes:", error);
     });
 }
-
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        loadAssignments(user.uid);
-    } else {
-        alert("You need to log in to view assignments.");
-        window.location.href = "login.html";
-    }
-});
