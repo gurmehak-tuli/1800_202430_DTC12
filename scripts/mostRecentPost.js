@@ -22,7 +22,7 @@ function displayLatestPost() {
 
                 // Link to the post page (or modify as needed)
                 const postId = querySnapshot.docs[0].id;
-                viewPostButton.href = `postPage.html?postId=${postId}`; // Make sure to adjust this link to your post page
+                viewPostButton.href = `communications.html`; // Make sure to adjust this link to your post page
             } else {
                 latestPostCard.innerHTML = "<p>No posts available</p>";
             }
