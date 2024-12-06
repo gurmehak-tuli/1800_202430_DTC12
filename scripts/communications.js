@@ -1,3 +1,5 @@
+
+
 function submitPost() {
     const postTitle = document.getElementById("title").value;
     const postContent = document.getElementById("content").value;
