@@ -31,7 +31,9 @@ function loadAssignments(userID) {
                 assignmentSnapshot.forEach((doc) => {
                     const assignment = doc.data();
                     assignment.id = doc.id;
-                    assignments.push(assignment);
+                    if (assignment.completed !== true) {
+                        assignments.push(assignment);
+                    }
                 });
 
                 assignments.sort((a, b) => urgencyLevels[b.urgency] - urgencyLevels[a.urgency]);
