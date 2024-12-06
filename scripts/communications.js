@@ -1,5 +1,4 @@
-
-
+// Submit post Button
 function submitPost() {
     const postTitle = document.getElementById("title").value;
     const postContent = document.getElementById("content").value;
@@ -18,17 +17,18 @@ function submitPost() {
         });
 }
 
-
+// Display the posts
 function displayPosts() {
     const postGroup = document.getElementById("postGroup");
     postGroup.innerHTML = "";
-
+    // Retreive the posts from the database
     db.collection("posts")
         .orderBy("timestamp", "desc")
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 const post = doc.data();
+                // Adding the posts to HTML
                 const postCard = `
                     <div class="col-md-6">
                         <div class="card mb-4">
@@ -49,5 +49,4 @@ function displayPosts() {
             console.error("Error fetching posts: ", error);
         });
 }
-
 displayPosts();

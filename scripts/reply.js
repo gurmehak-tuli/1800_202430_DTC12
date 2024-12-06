@@ -1,15 +1,15 @@
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("postId");
-
+// Print to ensure that the post ID is being recieved
 console.log("Retrieved postId:", postId);
-
+// Print to tell if post ID is not found to help with debugging
 if (!postId) {
     console.error("No postId found in the query string.");
 }
-
+// Display the post and replies
 function displayPostAndReplies() {
     if (!postId) return;
-
+    // Retreieve the posts from the database
     db.collection("posts").doc(postId).get()
         .then(doc => {
             if (doc.exists) {
@@ -33,7 +33,7 @@ displayPostAndReplies();
 function displayReplies(postId) {
     const replyGroup = document.getElementById("replyGroup");
     replyGroup.innerHTML = "";
-
+    // Display the replies
     db.collection("posts").doc(postId).collection("replies")
         .orderBy("timestamp", "asc")
         .get()

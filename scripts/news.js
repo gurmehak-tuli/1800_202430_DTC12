@@ -1,11 +1,12 @@
-const RSS_URL = 'https://cors-anywhere.herokuapp.com/commons.bcit.ca/news/feed/';
-fetch(RSS_URL)
+const RSS_URL = 'https://cors-anywhere.herokuapp.com/commons.bcit.ca/news/feed/'; // Feed URL
+fetch(RSS_URL) // Fetching the news
     .then(response => response.text())
     .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
     .then(data => {
         const items = data.querySelectorAll('item');
         let html = '';
         items.forEach(item => {
+            // Adding the news to HTML
             const title = item.querySelector('title').innerHTML;
             const link = item.querySelector('link').innerHTML;
             const pubDate = item.querySelector('pubDate').innerHTML;
