@@ -1,3 +1,15 @@
+function doAll() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            displayClassAndAssignments(user.uid);
+        } else {
+            alert("You need to log in to view assignments.");
+            window.location.href = "login.html";
+        }
+    });
+}
+doAll();
+
 function displayClassAndAssignments(userId) {
     const params = new URL(window.location.href);
     const classId = params.searchParams.get("classId");
@@ -57,8 +69,9 @@ function displayClassAndAssignments(userId) {
                     }).then(() => {
                         doneButton.innerText = "Completed";
                         doneButton.disabled = true;
-                        assignmentCard.querySelector(".status").innerText = "Status: Completed";
                         alert("Assignment marked as completed.");
+                        window.location.reload();
+                        assignmentCard.querySelector(".status").innerText = "Status: Completed";
                     }).catch((error) => {
                         console.error("Error marking assignment as done:", error);
                     });
@@ -71,12 +84,3 @@ function displayClassAndAssignments(userId) {
         console.error("Error fetching assignments:", error);
     });
 }
-
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        displayClassAndAssignments(user.uid);
-    } else {
-        alert("You need to log in to view assignments.");
-        window.location.href = "login.html";
-    }
-});
