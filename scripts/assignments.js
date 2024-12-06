@@ -12,16 +12,6 @@ function doAll() {
 }
 doAll();
 
-function insertNameFromFirestore(user) {
-    db.collection("users").doc(user.uid).get().then(userDoc => {
-        console.log(userDoc.data().name)
-        userName = userDoc.data().name;
-        console.log(userName)
-        document.getElementById("name-goes-here").innerHTML = userName;
-    })
-
-}
-
 function displayClassesDynamically() {
     let cardTemplate = document.getElementById("assignmentCardTemplate");
 
@@ -35,7 +25,7 @@ function displayClassesDynamically() {
                 let newCard = cardTemplate.content.cloneNode(true);
 
                 newCard.querySelector(".card-title").innerText = classData.name;
-                newCard.querySelector(".card-text").innerText = classData.details || "No details available.";
+                newCard.querySelector(".card-text").innerText = classData.profName || "No details available.";
                 newCard.querySelector(".card-image").src = `./images/${classData.code}.jpg`;
                 newCard.querySelector(".card-image").alt = classData.name || "N/A";
 
