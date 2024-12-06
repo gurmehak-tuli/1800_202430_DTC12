@@ -1,3 +1,15 @@
+function doAll() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            loadAssignments(user.uid);
+        } else {
+            alert("You need to log in to view assignments.");
+            window.location.href = "login.html";
+        }
+    });
+}
+doAll();
+
 function loadAssignments(userID) {
     const db = firebase.firestore();
     const classesRef = db.collection("users").doc(userID).collection("classes");
