@@ -109,7 +109,28 @@ It has the following subfolders and files:
     ├── footer.html             # Footer section of the website
     ├── nav_after_login.html    # Navigation bar for logged-in users
     ├── nav_before_login.html   # Navigation bar for visitors or logged-out users
-├── trash                   # Trash folder for unused or temporary files
+├── trash                   # Trash folder for unused or old files that contain non implamented features
+    ├── assignments copy.js     #Testing
+    ├── addAssignments.js       # Copy of addAssignments.js #Testing
+    ├── addClass.js             #Testing
+    ├── assignments copy.js     # Copy of addAssignments.js #Testing
+    ├── assignments.html        #Testing
+    ├── community.html          # Community.html old social page #Testing
+    ├── dgclasses.js            #Testing
+    ├── events.html             # Old feature
+    ├── indexgood.html          # Original index
+    ├── main copy.html          #Testing
+    ├── main.js                 #Testing
+    ├── map copy.html           #Testing
+    ├── map_places.html         # Old feature
+    ├── news.html               #Testing
+    ├── pc.js                   # Places script testing 
+    ├── places.js               # Old feature
+    ├── saftey.html             # Old feature
+    ├── seeAssignments.html     #Testing
+    ├── seeAssignments.js       #Testing
+    ├── sidebar.js              # Old side bar code
+    ├── testedit.html           #Testing
 
 ```
 
