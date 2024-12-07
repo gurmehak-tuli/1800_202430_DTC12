@@ -2,7 +2,7 @@
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application to ... 
+Our team DTC-12 is developing a revised and improved BCIT app to help students with their productivity with a better UI and more beneficial features unlike the current app.
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
@@ -49,6 +49,7 @@ Top level of project folder:
 ├── communications.html      # Communications page
 ├── contact.html             # Contact methods page
 ├── contactus.html           # Contact Us form
+├── edittask.html            # Edit tasks page
 ├── index.html               # Landing HTML file, this is what users see when they visit the URL
 ├── login.html               # Login page
 ├── main.html                # Main application dashboard
@@ -69,6 +70,16 @@ Top level of project folder:
 ├── thankyouReply.html       # Acknowledgment page for reply submissions
 
 It has the following subfolders and files:
+├── images                   # Folder for images
+    ├── 512px-BCIT_logo.jpeg    # BCIT official logo
+    ├── COMP1113.jpg            # Image for the COMP1113 class
+    ├── COMP1116.jpg            # Image for the COMP1116 class
+    ├── COMP1510.jpg            # Image for the COMP1510 class
+    ├── COMP1537.jpg            # Image for the COMP1537 class
+    ├── COMP1712.jpg            # Image for the COMP1712 class
+    ├── COMP1800.jpg            # Image for the COMP1800 class
+    ├── image-removebg-preview.png # Transparent background image
+    ├── Mybcitlogo.jpg          # Custom project logo
 ├── scripts                  # Folder for scripts
     ├── addAssignments.js       # Script for adding new assignments
     ├── assignmentList.js       # Logic for managing and displaying assignment lists
@@ -94,16 +105,12 @@ It has the following subfolders and files:
     ├── nav_before_login.css    # Styles for the navigation bar before login
     ├── news.css                # Styles specific to the News page
     ├── style.css               # Main stylesheet with custom overrides and design enhancements
-├── images                   # Folder for images
-  ├── 512px-BCIT_logo.jpeg    # BCIT official logo
-    ├── COMP1113.jpg            # Image for the COMP1113 class
-    ├── COMP1116.jpg            # Image for the COMP1116 class
-    ├── COMP1510.jpg            # Image for the COMP1510 class
-    ├── COMP1537.jpg            # Image for the COMP1537 class
-    ├── COMP1712.jpg            # Image for the COMP1712 class
-    ├── COMP1800.jpg            # Image for the COMP1800 class
-    ├── image-removebg-preview.png # In use BCIT LOGO
-    ├── Mybcitlogo.jpg          # Custom inital logo for the project
+├── text                    # Folder containing reusable HTML components for the project
+    ├── footer.html             # Footer section of the website
+    ├── nav_after_login.html    # Navigation bar for logged-in users
+    ├── nav_before_login.html   # Navigation bar for visitors or logged-out users
+├── trash                   # Trash folder for unused or temporary files
+
 ```
 
 
