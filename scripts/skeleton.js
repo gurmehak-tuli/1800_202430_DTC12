@@ -22,7 +22,7 @@ function loadSkeleton() {
     });
 }
 loadSkeleton(); //invoke the function
-
+// Sidebar button
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('active');
