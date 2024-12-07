@@ -22,9 +22,9 @@ function doAll() {
 doAll();
 
 
-function writeAssignments() {
+function writeAssignments() { //Function to write assignments to Firestore
     //define a variable for the collection you want to create in Firestore to populate data
-    const classes = db.collection("classes");
+    const classes = db.collection("classes"); //creates a collection called classes in Firestore
 
     classes.add({
         code: "COMP1800",
@@ -84,11 +84,11 @@ function writeAssignments() {
 
 }
 
-function displayCardsDynamically(collection) {
+function displayCardsDynamically(collection) { //Function to display the classes dynamically on the page
     let cardTemplate = document.getElementById("assignmentCardTemplate");
 
-    db.collection(collection).get()
-        .then(allAssignments => {
+    db.collection(collection).get() //Retrieves all the classes for the current user
+        .then(allAssignments => { //Loops through each class document
             allAssignments.forEach(doc => {
                 var assignmentData = doc.data();
                 var assignmentCode = assignmentData.code;
@@ -131,7 +131,7 @@ function displayCardsDynamically(collection) {
 }
 
 
-function addAssignment() {
+function addAssignment() { //Function to add an assignment to Firestore
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
     const dueDate = document.getElementById("due date").value; 
@@ -159,14 +159,14 @@ function addAssignment() {
         });
 }
 
-function addAssignment() {
+function addAssignment() { //Function to add an assignment to Firestore
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
     const dueDate = document.getElementById("due date").value;
     const urgency = document.getElementById("urgancy").value; 
     const user = firebase.auth().currentUser;
 
-    db.collection("users")
+    db.collection("users") //Creates a reference to the users collection in Firestore
         .doc(user.uid)
         .collection("added assignments")
         .add({

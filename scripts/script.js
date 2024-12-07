@@ -19,12 +19,12 @@ function logout() {
         // An error happened.
     });
 }
-function insertNameFromFirestore(user) {
-    db.collection("users").doc(user.uid).get().then(userDoc => {
-        console.log(userDoc.data().name)
+function insertNameFromFirestore(user) { // Function to insert the user's name from Firestore.
+    db.collection("users").doc(user.uid).get().then(userDoc => { // Retrieves the user's document from Firestore.
+        console.log(userDoc.data().name) 
         userName = userDoc.data().name;
         console.log(userName)
-        document.getElementById("name-goes-here").innerHTML = userName;
+        document.getElementById("name-goes-here").innerHTML = userName; // Inserts the user's name into the HTML.
     })
 
 }
