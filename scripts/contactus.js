@@ -17,7 +17,7 @@ function setupContactForm() {
     const contactForm = document.querySelector('form');
     contactForm.addEventListener('submit', handleContactSubmission);
 }
-
+// sends messages to admins
 function handleContactSubmission(e) {
     e.preventDefault(); 
 
@@ -39,7 +39,7 @@ function handleContactSubmission(e) {
             alert("An error occurred while sending your message. Please try again.");
         });
 }
-
+// makes sure all fields are filled out
 function validateContactData({ name, email, message }) {
     if (!name || !email || !message) {
         alert("Please fill in all fields.");
@@ -54,7 +54,7 @@ function validateContactData({ name, email, message }) {
 
     return true;
 }
-
+// sends the info to the database
 function saveContactToFirestore({ name, email, message }) {
     const userId = firebase.auth().currentUser.uid;
     
