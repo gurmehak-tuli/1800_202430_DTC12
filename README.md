@@ -71,15 +71,13 @@ Top level of project folder:
 
 It has the following subfolders and files:
 ├── images                   # Folder for images
-    ├── 512px-BCIT_logo.jpeg    # BCIT official logo
-    ├── COMP1113.jpg            # Image for the COMP1113 class
-    ├── COMP1116.jpg            # Image for the COMP1116 class
-    ├── COMP1510.jpg            # Image for the COMP1510 class
-    ├── COMP1537.jpg            # Image for the COMP1537 class
-    ├── COMP1712.jpg            # Image for the COMP1712 class
-    ├── COMP1800.jpg            # Image for the COMP1800 class
-    ├── image-removebg-preview.png # Transparent background image
-    ├── Mybcitlogo.jpg          # Custom project logo
+    ├── COMP1113.jpg            # Image for the COMP1113 class (Sourced from LearningHub)
+    ├── COMP1116.jpg            # Image for the COMP1116 class (Sourced from LearningHub)
+    ├── COMP1510.jpg            # Image for the COMP1510 class (Sourced from LearningHub)
+    ├── COMP1537.jpg            # Image for the COMP1537 class (Sourced from LearningHub)
+    ├── COMP1712.jpg            # Image for the COMP1712 class (Sourced from LearningHub)
+    ├── COMP1800.jpg            # Image for the COMP1800 class (Sourced from LearningHub)
+    ├── image-removebg-preview.png # App Logo (Made using AI)
 ├── scripts                  # Folder for scripts
     ├── addAssignments.js       # Script for adding new assignments
     ├── assignmentList.js       # Logic for managing and displaying assignment lists
