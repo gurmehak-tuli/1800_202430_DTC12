@@ -1,4 +1,6 @@
+// Parse the URL query string to retrieve parameters
 const urlParams = new URLSearchParams(window.location.search);
+// Retrieve the 'postId' parameter from the query string
 const postId = urlParams.get("postId");
 // Print to ensure that the post ID is being recieved
 console.log("Retrieved postId:", postId);
@@ -14,6 +16,7 @@ function displayPostAndReplies() {
         .then(doc => {
             if (doc.exists) {
                 const post = doc.data();
+                // Update the page elements with post details
                 document.getElementById("postTitle").innerText = post.title;
                 document.getElementById("postContent").innerText = post.content;
                 document.getElementById("postTimestamp").innerText = post.timestamp ? post.timestamp.toDate().toLocaleString() : '';
@@ -40,6 +43,7 @@ function displayReplies(postId) {
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 const reply = doc.data();
+                // Create an HTML structure for each reply
                 const replyCard = `
                     <div class="card mb-3">
                         <div class="card-body">
@@ -57,6 +61,7 @@ function displayReplies(postId) {
 }
 
 function submitReply() {
+    // Retrieve the reply content from the input field
     const replyContent = document.getElementById("replyContent").value;
 
     console.log("Submitting reply for postId:", postId);
@@ -71,6 +76,7 @@ function submitReply() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
         .then(() => {
+            // Log success message and redirect to the thank-you page
             console.log("Reply successfully submitted!");
             window.location.href = `thankyouReply.html?postId=${postId}`;
         })
