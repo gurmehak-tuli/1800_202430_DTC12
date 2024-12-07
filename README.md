@@ -1,4 +1,4 @@
-# Project Title
+# The myBCIT+ App
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
@@ -26,36 +26,84 @@ Here are the steps ...
 
 ## 5. Known Bugs and Limitations
 Here are some known bugs:
-* We have to require cors-anywhere demo access, however this issue can be resolved when we intergrate a backend.
+* We have to require cors-anywhere demo access, however this issue can be resolved when we intergrate a backend. #CONSTRAINT
 * ...
 * ...
 
 ## 6. Features for Future
 What we'd like to build in the future:
 * Have LearningHub intergrated so users dont have to manually add assignemnts.
-* Connect the LearningHUb to google calender so it gets manually updated.
-* ...
+* Connect the LearningHub to google calender so it gets auto updated when new tasks come out.
+* Auto RSS without having to use the temporary server
 	
 ## 7. Contents of Folder
 Content of the project folder:
 
 ```
- Top level of project folder: 
+Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── 404.html                 # 404 Error page
+├── aboutus.html             # About Us page
+├── academics.html           # Academics page
+├── addassignments.html      # Add Assignments page
+├── communications.html      # Communications page
+├── contact.html             # Contact methods page
+├── contactus.html           # Contact Us form
+├── index.html               # Landing HTML file, this is what users see when they visit the URL
+├── login.html               # Login page
+├── main.html                # Main application dashboard
+├── map.html                 # Campus Map
+├── news.html                # BCIT News Feed
+├── newsDetail.html          # BCIT News Details page
+├── profile.html             # User profile page
+├── profileFirstTime.html    # First-time user profile setup page
+├── README.md                # Project overview and documentation
+├── reply.html               # Replies section for posts
+├── resources.html           # Resources page
+├── schedule.html            # Schedule page
+├── seeAssignments.html      # View assignments page
+├── template.html            # HTML template file
+├── thanks.html              # Acknowledgment page for added assignments
+├── thankscontact.html       # Acknowledgment page for contact submissions
+├── thanksPostSubmit.html    # Acknowledgment page for post submissions
+├── thankyouReply.html       # Acknowledgment page for reply submissions
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
+    ├── addAssignments.js       # Script for adding new assignments
+    ├── assignmentList.js       # Logic for managing and displaying assignment lists
+    ├── assignments.js          # Core logic for managing assignments by class
+    ├── authentication.js       # Firebase authentication and user setup
+    ├── communications.js       # Posting and displaying posts in the communications section
+    ├── contactus.js            # Script for the contact form functionality
+    ├── dgclasses.js            # Dynamic class and assignment management
+    ├── edittask.js             # Script for editing existing assignments
+    ├── firebaseAPI_DTC12.js    # Firebase API integration script
+    ├── mostRecentPost.js       # Logic for displaying the latest post
+    ├── nav.js                  # Navigation bar functionality
+    ├── news.js                 # RSS feed integration for BCIT news
+    ├── profile.js              # User profile management script
+    ├── profileFirstTime.js     # Logic for first-time user profile setup
+    ├── reply.js                # Script for handling post replies
+    ├── schedule.js             # Logic for displaying class schedules
+    ├── script.js               # Core application logic
+    ├── seeAssignments.js       # Logic for displaying assignments by class
+    ├── skeleton.js             # Script for loading navbar and footer dynamically
 ├── styles                   # Folder for styles
-    /blah.css                # 
-
-
-
+    ├── nav_after_login.css     # Styles for the navigation bar after login
+    ├── nav_before_login.css    # Styles for the navigation bar before login
+    ├── news.css                # Styles specific to the News page
+    ├── style.css               # Main stylesheet with custom overrides and design enhancements
+├── images                   # Folder for images
+  ├── 512px-BCIT_logo.jpeg    # BCIT official logo
+    ├── COMP1113.jpg            # Image for the COMP1113 class
+    ├── COMP1116.jpg            # Image for the COMP1116 class
+    ├── COMP1510.jpg            # Image for the COMP1510 class
+    ├── COMP1537.jpg            # Image for the COMP1537 class
+    ├── COMP1712.jpg            # Image for the COMP1712 class
+    ├── COMP1800.jpg            # Image for the COMP1800 class
+    ├── image-removebg-preview.png # In use BCIT LOGO
+    ├── Mybcitlogo.jpg          # Custom inital logo for the project
 ```
 
 

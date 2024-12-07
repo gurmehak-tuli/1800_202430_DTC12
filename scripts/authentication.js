@@ -22,8 +22,8 @@ var uiConfig = {
                     name: user.displayName,
                     email: user.email,
                     country: "",
-                    school: "",
-                    firstTime: true
+                    school: "British Columbia Institute of Technology",
+                    firstTime: true // Set to true to redirect to profile setup
                 }).then(function () {
                     console.log("New user added to Firestore.");
                     window.location.assign("profileFirstTime.html");
@@ -63,12 +63,12 @@ var uiConfig = {
         // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         // firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        // firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        // firebase.auth.PhoneAuthProvider.PROVIDER_ID 
     ],
     // Terms of service url.
-    tosUrl: '<your-tos-url>',
+    // tosUrl: '<your-tos-url>', NOTE: This is not includeded.
     // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
+    // privacyPolicyUrl: '<your-privacy-policy-url>' NOTE: This is not includeded.
 };
 
 ui.start('#firebaseui-auth-container', uiConfig);

@@ -10,6 +10,22 @@ function doAll() {
 }
 doAll();
 
+/**
+ * Loads assignments for a given user and displays them in the assignments container.
+ * 
+ * @param {string} userID - The ID of the user whose assignments are to be loaded.
+ * 
+ * @description
+ * This function retrieves the classes for a user from the Firestore database, then fetches the assignments for each class.
+ * It filters out completed assignments, sorts them by urgency, and displays them in the DOM.
+ * 
+ * @returns {void}
+ * 
+ * @example
+ * loadAssignments('user123');
+ * 
+ * @throws Will log an error to the console if there is an issue fetching classes or assignments from Firestore.
+ */
 function loadAssignments(userID) {
     const db = firebase.firestore();
     const classesRef = db.collection("users").doc(userID).collection("classes");
